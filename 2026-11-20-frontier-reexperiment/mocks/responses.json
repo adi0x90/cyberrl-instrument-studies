@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "algorithm": "sha256(utf8(json.dumps({'model': model, 'messages': messages}, sort_keys=True, separators=(',', ':'), ensure_ascii=False)))",
+  "note": "Deterministic mock corpus for harness.models.chat(mock=True). Canned replies are keyed by the sha256 of (model, canonical messages); prompts without an entry fall through to the generator templates below, chosen by digest bytes 0:8 (template) and 8:16 (expression).",
+  "canned": {
+    "a44f3a572f8e4653272872354760096956a4d0f50610e87cc2d6eb5fb1ae7e7c": {
+      "text": "{\"expression\": \"req.tenant_id == resource.tenant_id and req.can_write\"}",
+      "prompt_tokens": 88,
+      "completion_tokens": 18
+    },
+    "b29089a70ccd276f781a140e8276bd5332f5a0447b77ae7c142a899c70e3259b": {
+      "text": "{\"expression\": \"s.startswith(p)\"}",
+      "prompt_tokens": 38,
+      "completion_tokens": 9
+    },
+    "024f1ffb86c4469a3dc8db9f32e53c3aac48ce7c29fc52b394060b62956a2ca1": {
+      "text": "```json\n{\"expression\": \"resource.tenant_id == req.tenant_id and req.can_write\"}\n```",
+      "prompt_tokens": 88,
+      "completion_tokens": 21
+    },
+    "e0a7a20827f4738f873c69a50fe15d1b60a949c108164e9ae63d6a25f0eddf22": {
+      "text": "```json\n{\"expression\": \"s.startswith(p)\"}\n```",
+      "prompt_tokens": 38,
+      "completion_tokens": 12
+    },
+    "bf0dbe516d343215b3bb794af8e1ab8f17633a39931a2efa9eabb0fdf84b1304": {
+      "text": "--- a/challenge.py\n+++ b/challenge.py\n@@ -1,2 +1,2 @@\n def check(req, resource):\n-    return REPLACE_ME\n+    return req.tenant_id == resource.tenant_id and req.can_write\n",
+      "prompt_tokens": 92,
+      "completion_tokens": 43
+    },
+    "c59a639cdad0cdfcc2afb65abf1af709047e3b8a1e395cdcd16f28808298b279": {
+      "text": "{\"expression\": \"s.startswith(p)\"}",
+      "prompt_tokens": 42,
+      "completion_tokens": 9
+    }
+  },
+  "fallback": {
+    "templates": [
+      "{\"expression\": \"{expression}\"}",
+      "```json\n{\"expression\": \"{expression}\"}\n```",
+      "--- a/challenge.py\n+++ b/challenge.py\n@@ -1,1 +1,1 @@\n-    return REPLACE_ME\n+    return {expression}\n",
+      "```python\ndef check(req, resource):\n    return {expression}\n```"
+    ],
+    "expressions": [
+      "True",
+      "False",
+      "req.tenant_id == resource.tenant_id",
+      "req.can_write",
+      "x == y",
+      "x != y",
+      "x is not None",
+      "a in b",
+      "s.startswith(p)",
+      "True and (a == b)"
+    ]
+  }
+}

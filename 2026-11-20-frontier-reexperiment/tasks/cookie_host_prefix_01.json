@@ -1,0 +1,137 @@
+{
+  "id": "cookie_host_prefix_01",
+  "family": "cookie",
+  "polarity_sensitive": true,
+  "source": "\"\"\"Set-Cookie policy for __Host- prefixed cookies.\"\"\"\n\n\nclass Cookie:\n    def __init__(self, name, secure, path, domain, http_only):\n        self.name = name\n        self.secure = secure\n        self.path = path\n        self.domain = domain\n        self.http_only = http_only\n\n\ndef host_prefix_ok(cookie):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def host_prefix_ok",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "This gate admits a cookie only when it is a '__Host-' cookie with Secure set, Path=/, HttpOnly set, and no Domain attribute at all.",
+  "security_cases": [
+    {
+      "id": "s1_domain_attribute_set",
+      "call": "host_prefix_ok(Cookie(\"__Host-sid\", True, \"/\", \"example.com\", True))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_missing_secure",
+      "call": "host_prefix_ok(Cookie(\"__Host-sid\", False, \"/\", None, True))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_path_not_root",
+      "call": "host_prefix_ok(Cookie(\"__Host-sid\", True, \"/app\", None, True))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_missing_httponly",
+      "call": "host_prefix_ok(Cookie(\"__Host-sid\", True, \"/\", None, False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_lowercase_prefix",
+      "call": "host_prefix_ok(Cookie(\"__host-sid\", True, \"/\", None, True))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_unprefixed_name",
+      "call": "host_prefix_ok(Cookie(\"session\", True, \"/\", None, True))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s7_empty_domain_attribute",
+      "call": "host_prefix_ok(Cookie(\"__Host-sid\", True, \"/\", \"\", True))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s8_parent_domain_attribute",
+      "call": "host_prefix_ok(Cookie(\"__Host-sid\", True, \"/\", \".example.com\", True))",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_compliant_host_cookie",
+      "call": "host_prefix_ok(Cookie(\"__Host-sid\", True, \"/\", None, True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_compliant_prefixed_name",
+      "call": "host_prefix_ok(Cookie(\"__Host-pref-sid\", True, \"/\", None, True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_compliant_csrf_cookie",
+      "call": "host_prefix_ok(Cookie(\"__Host-csrf\", True, \"/\", None, True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_compliant_hex_name",
+      "call": "host_prefix_ok(Cookie(\"__Host-0123456789abcdef\", True, \"/\", None, True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_compliant_dotted_name",
+      "call": "host_prefix_ok(Cookie(\"__Host-sess.1\", True, \"/\", None, True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_compliant_long_name",
+      "call": "host_prefix_ok(Cookie(\"__Host-abcdefghij\", True, \"/\", None, True))",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "cookie.name.startswith(\"__Host-\") and cookie.secure and cookie.path == \"/\" and cookie.domain is None and cookie.http_only",
+  "alternate_fixes": [
+    "cookie.domain is None and cookie.http_only and cookie.path == \"/\" and cookie.secure and cookie.name.startswith(\"__Host-\")",
+    "cookie.name[:7] == \"__Host-\" and cookie.secure and cookie.path == \"/\" and cookie.http_only and cookie.domain is None",
+    "all((cookie.name.startswith(\"__Host-\"), cookie.secure, cookie.http_only, cookie.path == \"/\", cookie.domain is None))"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "cookie.name.startswith(\"__Host-\") and cookie.secure and cookie.path == \"/\" and cookie.domain is None and cookie.http_only and cookie.name != \"__Host-sid\"",
+      "why": "Blocks the exact cookie name from the PoC, so the compliant '__Host-sid' cookie the application must set is refused too."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "cookie.name.startswith(\"__Host-\") and cookie.secure and cookie.path == \"/\"",
+      "why": "Checks the prefix, Secure and Path but not the Domain or HttpOnly obligations, so a __Host- cookie with Domain set is admitted."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Refuses every cookie, so no legitimate policy-compliant cookie can be set."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and (cookie.name.startswith(\"__Host-\") and cookie.secure and cookie.http_only)",
+      "why": "Wraps a prefix/flag check in 'True and (...)', leaving both the Domain and Path obligations unchecked."
+    }
+  ],
+  "polarity": {
+    "fact": "A '__Host-' cookie must carry no Domain attribute, so the domain must be absent (None); a present Domain attribute must never be admitted.",
+    "correct_marker": [
+      "is None"
+    ],
+    "converse_marker": [
+      "is not None"
+    ]
+  }
+}

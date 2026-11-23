@@ -1,0 +1,1174 @@
+{
+  "argv": [
+    "--arm",
+    "masked",
+    "--adapter",
+    "results7b/adapters/masked_20261120",
+    "--out",
+    "results7b/eval_masked_20261120.json",
+    "--decodings",
+    "16",
+    "--max-minutes",
+    "40",
+    "--model",
+    "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "--dtype",
+    "bfloat16"
+  ],
+  "arm": "masked",
+  "counts": {
+    "admitted": 54,
+    "draws": 64,
+    "holds": 27
+  },
+  "decoding": {
+    "decodings_per_task": 16,
+    "max_new_tokens": 48,
+    "temperature": 1.0,
+    "top_p": 0.95
+  },
+  "decodings": 16,
+  "dry_run": false,
+  "endpoints": {
+    "admission_rate": 0.84375,
+    "admission_rate_wilson95": [
+      0.7357170979769467,
+      0.9128525112303834
+    ],
+    "draws": 64,
+    "joint_success": 0.421875,
+    "joint_success_given_admitted": 0.5,
+    "joint_success_wilson95": [
+      0.3086959366145158,
+      0.5439018794747275
+    ]
+  },
+  "experiment": "2026-11-20-masking-grpo",
+  "git_sha": "unknown",
+  "held_out_tasks": [
+    "cookie_host_prefix_01",
+    "cookie_hostonly_forward_02",
+    "state_drift_quorum_generation_02",
+    "state_drift_revocation_epoch_01"
+  ],
+  "model": {
+    "adapter_path": "results7b/adapters/masked_20261120",
+    "cuda": "13.2",
+    "device": "cuda",
+    "device_count": 1,
+    "dtype": "bfloat16",
+    "gpu": "NVIDIA A40",
+    "gpu_memory_mb": 45490,
+    "kind": "torch",
+    "local_files_only": false,
+    "lora": {
+      "alpha": 32,
+      "dropout": 0.0,
+      "r": 16,
+      "target_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    "model_id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "optimizer": {
+      "lr": 1e-05,
+      "name": "AdamW",
+      "weight_decay": 0.0
+    },
+    "pinned": false,
+    "requested_revision": "unpinned",
+    "resolved_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  },
+  "per_task": [
+    {
+      "admission_rate": 0.8125,
+      "admitted": 13,
+      "draws": 16,
+      "holds": 6,
+      "joint_success": 0.375,
+      "joint_success_given_admitted": 0.46153846153846156,
+      "task_id": "cookie_host_prefix_01"
+    },
+    {
+      "admission_rate": 0.8125,
+      "admitted": 13,
+      "draws": 16,
+      "holds": 12,
+      "joint_success": 0.75,
+      "joint_success_given_admitted": 0.9230769230769231,
+      "task_id": "cookie_hostonly_forward_02"
+    },
+    {
+      "admission_rate": 0.8125,
+      "admitted": 13,
+      "draws": 16,
+      "holds": 5,
+      "joint_success": 0.3125,
+      "joint_success_given_admitted": 0.38461538461538464,
+      "task_id": "state_drift_quorum_generation_02"
+    },
+    {
+      "admission_rate": 0.9375,
+      "admitted": 15,
+      "draws": 16,
+      "holds": 4,
+      "joint_success": 0.25,
+      "joint_success_given_admitted": 0.26666666666666666,
+      "task_id": "state_drift_revocation_epoch_01"
+    }
+  ],
+  "records": [
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"(cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None)\"\n}",
+      "completion_tokens": 33,
+      "decoding": 0,
+      "expression": "(cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None)",
+      "prompt_tokens": 331,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1874336459,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and not cookie.domain and cookie.http_only\"\n}",
+      "completion_tokens": 33,
+      "decoding": 1,
+      "expression": "cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and not cookie.domain and cookie.http_only",
+      "prompt_tokens": 331,
+      "reasons": [
+        "SECURITY: 1/8 security case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 1717258142,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{ \"expression\": \"(cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None)\" }",
+      "completion_tokens": 33,
+      "decoding": 2,
+      "expression": "(cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None)",
+      "prompt_tokens": 331,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 244887513,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and not cookie.domain and cookie.http_only\"\n}",
+      "completion_tokens": 32,
+      "decoding": 3,
+      "expression": "cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and not cookie.domain and cookie.http_only",
+      "prompt_tokens": 331,
+      "reasons": [
+        "SECURITY: 1/8 security case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 3116782835,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"(cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None)\"\n}",
+      "completion_tokens": 34,
+      "decoding": 4,
+      "expression": "(cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None)",
+      "prompt_tokens": 331,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1508506328,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "markdown code fence is not allowed by the strict envelope",
+      "admitted": false,
+      "completion": "```json\n{\"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None\"}\n```",
+      "completion_tokens": 35,
+      "decoding": 5,
+      "expression": null,
+      "prompt_tokens": 331,
+      "reasons": [
+        "NO_EXPRESSION: no candidate expression was admitted, nothing to grade"
+      ],
+      "reward": 0.0,
+      "seed": 311701381,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and not cookie.domain\"\n}",
+      "completion_tokens": 32,
+      "decoding": 6,
+      "expression": "cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and not cookie.domain",
+      "prompt_tokens": 331,
+      "reasons": [
+        "SECURITY: 1/8 security case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 343829834,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"(cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None)\"\n}",
+      "completion_tokens": 34,
+      "decoding": 7,
+      "expression": "(cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None)",
+      "prompt_tokens": 331,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 2103742344,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "markdown code fence is not allowed by the strict envelope",
+      "admitted": false,
+      "completion": "```json\n{\"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None\"}\n```",
+      "completion_tokens": 35,
+      "decoding": 8,
+      "expression": null,
+      "prompt_tokens": 331,
+      "reasons": [
+        "NO_EXPRESSION: no candidate expression was admitted, nothing to grade"
+      ],
+      "reward": 0.0,
+      "seed": 624175211,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and not cookie.domain\"\n}",
+      "completion_tokens": 33,
+      "decoding": 9,
+      "expression": "cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and not cookie.domain",
+      "prompt_tokens": 331,
+      "reasons": [
+        "SECURITY: 1/8 security case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 931789254,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and not cookie.domain\"\n}",
+      "completion_tokens": 32,
+      "decoding": 10,
+      "expression": "cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and not cookie.domain",
+      "prompt_tokens": 331,
+      "reasons": [
+        "SECURITY: 1/8 security case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 2723132542,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None\"\n}",
+      "completion_tokens": 34,
+      "decoding": 11,
+      "expression": "cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None",
+      "prompt_tokens": 331,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 683661217,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"(cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None)\"\n}",
+      "completion_tokens": 34,
+      "decoding": 12,
+      "expression": "(cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and cookie.domain is None)",
+      "prompt_tokens": 331,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 4079755146,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and not cookie.domain\"\n}",
+      "completion_tokens": 32,
+      "decoding": 13,
+      "expression": "cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and cookie.http_only and not cookie.domain",
+      "prompt_tokens": 331,
+      "reasons": [
+        "SECURITY: 1/8 security case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 3742117339,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n    \"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and not cookie.domain and cookie.http_only\"\n}",
+      "completion_tokens": 33,
+      "decoding": 14,
+      "expression": "cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and not cookie.domain and cookie.http_only",
+      "prompt_tokens": 331,
+      "reasons": [
+        "SECURITY: 1/8 security case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 974104542,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "markdown code fence is not allowed by the strict envelope",
+      "admitted": false,
+      "completion": "```json\n{\"expression\": \"cookie.name.startswith('__Host-') and cookie.secure and cookie.path == '/' and not cookie.domain and cookie.http_only\"}\n```",
+      "completion_tokens": 34,
+      "decoding": 15,
+      "expression": null,
+      "prompt_tokens": 331,
+      "reasons": [
+        "NO_EXPRESSION: no candidate expression was admitted, nothing to grade"
+      ],
+      "reward": 0.0,
+      "seed": 3323901769,
+      "task_id": "cookie_host_prefix_01",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\"expression\": \"cookie.host == request.host and (not cookie.secure or request.secure)\"}",
+      "completion_tokens": 22,
+      "decoding": 0,
+      "expression": "cookie.host == request.host and (not cookie.secure or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1866557282,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"(cookie.host == request.host) and ((not cookie.secure) or request.secure)\"\n}",
+      "completion_tokens": 25,
+      "decoding": 1,
+      "expression": "(cookie.host == request.host) and ((not cookie.secure) or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 2231314349,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"cookie.host == request.host and (not cookie.secure or request.secure)\"\n}",
+      "completion_tokens": 23,
+      "decoding": 2,
+      "expression": "cookie.host == request.host and (not cookie.secure or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 3164573833,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"(cookie.host == request.host) and (not cookie.secure or request.secure)\"\n}",
+      "completion_tokens": 25,
+      "decoding": 3,
+      "expression": "(cookie.host == request.host) and (not cookie.secure or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 4033925756,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{ \"expression\": \"request.host == cookie.host and (not cookie.secure or request.secure)\" }",
+      "completion_tokens": 23,
+      "decoding": 4,
+      "expression": "request.host == cookie.host and (not cookie.secure or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 3847022329,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"cookie.host == request.host and (not cookie.secure or request.secure)\"\n}",
+      "completion_tokens": 24,
+      "decoding": 5,
+      "expression": "cookie.host == request.host and (not cookie.secure or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 3801500601,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\"expression\": \"request.host == cookie.host and (not cookie.secure or request.secure)\"}",
+      "completion_tokens": 22,
+      "decoding": 6,
+      "expression": "request.host == cookie.host and (not cookie.secure or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 2548646613,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"(cookie.host == request.host) and (not cookie.secure or request.secure)\"\n}",
+      "completion_tokens": 24,
+      "decoding": 7,
+      "expression": "(cookie.host == request.host) and (not cookie.secure or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1537496257,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"cookie.host == request.host and not cookie.secure or cookie.secure and request.secure\"\n}",
+      "completion_tokens": 26,
+      "decoding": 8,
+      "expression": "cookie.host == request.host and not cookie.secure or cookie.secure and request.secure",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1016460848,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"(cookie.host == request.host) and (not cookie.secure or request.secure)\"\n}",
+      "completion_tokens": 25,
+      "decoding": 9,
+      "expression": "(cookie.host == request.host) and (not cookie.secure or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 3737130703,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\"expression\": \"cookie.host == request.host and not cookie.secure or not request.secure\"}",
+      "completion_tokens": 21,
+      "decoding": 10,
+      "expression": "cookie.host == request.host and not cookie.secure or not request.secure",
+      "prompt_tokens": 334,
+      "reasons": [
+        "SECURITY: 7/7 security case(s) failed",
+        "FEATURE_DELETION: 3/7 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 1977077055,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "not exactly one JSON object: Expecting property name enclosed in double quotes at line 1 column 2",
+      "admitted": false,
+      "completion": "{expression:\"cookie.host == request.host and (not cookie.secure or request.secure)\"}",
+      "completion_tokens": 21,
+      "decoding": 11,
+      "expression": null,
+      "prompt_tokens": 334,
+      "reasons": [
+        "NO_EXPRESSION: no candidate expression was admitted, nothing to grade"
+      ],
+      "reward": 0.0,
+      "seed": 1668740094,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"cookie.host == request.host and (not cookie.secure or request.secure)\"\n}",
+      "completion_tokens": 23,
+      "decoding": 12,
+      "expression": "cookie.host == request.host and (not cookie.secure or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1485720125,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "markdown code fence is not allowed by the strict envelope",
+      "admitted": false,
+      "completion": "```json\n{\n  \"expression\": \"cookie.host == request.host and (not cookie.secure or request.secure)\"\n}\n```",
+      "completion_tokens": 28,
+      "decoding": 13,
+      "expression": null,
+      "prompt_tokens": 334,
+      "reasons": [
+        "NO_EXPRESSION: no candidate expression was admitted, nothing to grade"
+      ],
+      "reward": 0.0,
+      "seed": 1075967835,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "admission_reason": "markdown code fence is not allowed by the strict envelope",
+      "admitted": false,
+      "completion": "```json\n{\n  \"expression\": \"cookie.host == request.host and (not cookie.secure or request.secure)\"\n}\n```",
+      "completion_tokens": 28,
+      "decoding": 14,
+      "expression": null,
+      "prompt_tokens": 334,
+      "reasons": [
+        "NO_EXPRESSION: no candidate expression was admitted, nothing to grade"
+      ],
+      "reward": 0.0,
+      "seed": 2484363203,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"(cookie.host == request.host) and (not cookie.secure or request.secure)\"\n}",
+      "completion_tokens": 25,
+      "decoding": 15,
+      "expression": "(cookie.host == request.host) and (not cookie.secure or request.secure)",
+      "prompt_tokens": 334,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 2141914024,
+      "task_id": "cookie_hostonly_forward_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "markdown code fence is not allowed by the strict envelope",
+      "admitted": false,
+      "completion": "```json\n{\n  \"expression\": \"lease.owner == 'local_node' and lease.generation == membership.generation and not lease.released\"\n}\n```",
+      "completion_tokens": 33,
+      "decoding": 0,
+      "expression": null,
+      "prompt_tokens": 342,
+      "reasons": [
+        "NO_EXPRESSION: no candidate expression was admitted, nothing to grade"
+      ],
+      "reward": 0.0,
+      "seed": 1272461843,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"lease.owner == 'local_node' and lease.generation == membership.generation and not lease.released\"\n}",
+      "completion_tokens": 29,
+      "decoding": 1,
+      "expression": "lease.owner == 'local_node' and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "FEATURE_DELETION: 7/7 benign case(s) failed",
+        "SYMPTOM_SUPPRESSION: every security case passes while benign behaviour is lost"
+      ],
+      "reward": 0.0,
+      "seed": 3278932596,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\"expression\": \"lease.owner == membership.node and lease.generation == membership.generation and not lease.released\"}",
+      "completion_tokens": 24,
+      "decoding": 2,
+      "expression": "lease.owner == membership.node and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 2385343501,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"lease.owner == 'local' and lease.generation == membership.generation and not lease.released\"\n}",
+      "completion_tokens": 28,
+      "decoding": 3,
+      "expression": "lease.owner == 'local' and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "FEATURE_DELETION: 7/7 benign case(s) failed",
+        "SYMPTOM_SUPPRESSION: every security case passes while benign behaviour is lost"
+      ],
+      "reward": 0.0,
+      "seed": 148227562,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"lease.owner == 'local' and lease.generation == membership.generation and not lease.released\"\n}",
+      "completion_tokens": 27,
+      "decoding": 4,
+      "expression": "lease.owner == 'local' and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "FEATURE_DELETION: 7/7 benign case(s) failed",
+        "SYMPTOM_SUPPRESSION: every security case passes while benign behaviour is lost"
+      ],
+      "reward": 0.0,
+      "seed": 2102096125,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{ \"expression\": \"lease.owner == membership.node and lease.generation == membership.generation and not lease.released\" }",
+      "completion_tokens": 26,
+      "decoding": 5,
+      "expression": "lease.owner == membership.node and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1008506415,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"lease.owner == 'local' and lease.generation == membership.generation and not lease.released\"\n}",
+      "completion_tokens": 28,
+      "decoding": 6,
+      "expression": "lease.owner == 'local' and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "FEATURE_DELETION: 7/7 benign case(s) failed",
+        "SYMPTOM_SUPPRESSION: every security case passes while benign behaviour is lost"
+      ],
+      "reward": 0.0,
+      "seed": 3898006018,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{ \"expression\": \"lease.owner == 'local' and lease.generation == membership.generation and not lease.released\" }",
+      "completion_tokens": 27,
+      "decoding": 7,
+      "expression": "lease.owner == 'local' and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "FEATURE_DELETION: 7/7 benign case(s) failed",
+        "SYMPTOM_SUPPRESSION: every security case passes while benign behaviour is lost"
+      ],
+      "reward": 0.0,
+      "seed": 257416932,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"lease.owner == 'local_node' and lease.generation == membership.generation and not lease.released\"\n}",
+      "completion_tokens": 29,
+      "decoding": 8,
+      "expression": "lease.owner == 'local_node' and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "FEATURE_DELETION: 7/7 benign case(s) failed",
+        "SYMPTOM_SUPPRESSION: every security case passes while benign behaviour is lost"
+      ],
+      "reward": 0.0,
+      "seed": 1845128454,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n    \"expression\": \"lease.owner == membership.node and lease.generation == membership.generation and not lease.released\"\n}",
+      "completion_tokens": 27,
+      "decoding": 9,
+      "expression": "lease.owner == membership.node and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1695300755,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\"expression\": \"lease.owner == membership.node and lease.generation == membership.generation and not lease.released\"}",
+      "completion_tokens": 24,
+      "decoding": 10,
+      "expression": "lease.owner == membership.node and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1989375783,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "markdown code fence is not allowed by the strict envelope",
+      "admitted": false,
+      "completion": "```json\n{\"expression\": \"lease.owner == 'local' and lease.generation == membership.generation and not lease.released\"}\n```",
+      "completion_tokens": 29,
+      "decoding": 11,
+      "expression": null,
+      "prompt_tokens": 342,
+      "reasons": [
+        "NO_EXPRESSION: no candidate expression was admitted, nothing to grade"
+      ],
+      "reward": 0.0,
+      "seed": 438488849,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\"expression\": \"lease.owner == 'local' and lease.generation == membership.generation and not lease.released\"}",
+      "completion_tokens": 25,
+      "decoding": 12,
+      "expression": "lease.owner == 'local' and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "FEATURE_DELETION: 7/7 benign case(s) failed",
+        "SYMPTOM_SUPPRESSION: every security case passes while benign behaviour is lost"
+      ],
+      "reward": 0.0,
+      "seed": 4168893710,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"lease.owner == 'local_node' and lease.generation == membership.generation and not lease.released\"\n}",
+      "completion_tokens": 29,
+      "decoding": 13,
+      "expression": "lease.owner == 'local_node' and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "FEATURE_DELETION: 7/7 benign case(s) failed",
+        "SYMPTOM_SUPPRESSION: every security case passes while benign behaviour is lost"
+      ],
+      "reward": 0.0,
+      "seed": 2104673463,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"lease.owner == membership.node and lease.generation == membership.generation and not lease.released\"\n}",
+      "completion_tokens": 26,
+      "decoding": 14,
+      "expression": "lease.owner == membership.node and lease.generation == membership.generation and not lease.released",
+      "prompt_tokens": 342,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1327597288,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "markdown code fence is not allowed by the strict envelope",
+      "admitted": false,
+      "completion": "```json\n{\n    \"expression\": \"lease.owner == 'local_node' and lease.generation == membership.generation and not lease.released\"\n}\n```",
+      "completion_tokens": 33,
+      "decoding": 15,
+      "expression": null,
+      "prompt_tokens": 342,
+      "reasons": [
+        "NO_EXPRESSION: no candidate expression was admitted, nothing to grade"
+      ],
+      "reward": 0.0,
+      "seed": 1563651837,
+      "task_id": "state_drift_quorum_generation_02",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"session.subject == state.subject and not state.settled and session.epoch >= state.epoch\"\n}",
+      "completion_tokens": 25,
+      "decoding": 0,
+      "expression": "session.subject == state.subject and not state.settled and session.epoch >= state.epoch",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 2/7 security case(s) failed",
+        "FEATURE_DELETION: 6/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 4044583026,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n    \"expression\": \"session.epoch <= state.epoch and state.settled and session.subject == state.subject\"\n}",
+      "completion_tokens": 25,
+      "decoding": 1,
+      "expression": "session.epoch <= state.epoch and state.settled and session.subject == state.subject",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 3/7 security case(s) failed",
+        "FEATURE_DELETION: 3/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 2572125658,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"session.epoch <= state.epoch and state.settled and session.subject == state.subject\"\n}",
+      "completion_tokens": 25,
+      "decoding": 2,
+      "expression": "session.epoch <= state.epoch and state.settled and session.subject == state.subject",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 3/7 security case(s) failed",
+        "FEATURE_DELETION: 3/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 904755599,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{ \"expression\": \"session.revocation_state.settled and session.revocation_state.subject == state.subject and session.revocation_state.epoch <= state.epoch\" }",
+      "completion_tokens": 33,
+      "decoding": 3,
+      "expression": "session.revocation_state.settled and session.revocation_state.subject == state.subject and session.revocation_state.epoch <= state.epoch",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 7/7 security case(s) failed",
+        "FEATURE_DELETION: 6/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 3831739037,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"(session.epoch <= state.epoch) and state.settled and (session.subject == state.subject)\"\n}",
+      "completion_tokens": 26,
+      "decoding": 4,
+      "expression": "(session.epoch <= state.epoch) and state.settled and (session.subject == state.subject)",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 3/7 security case(s) failed",
+        "FEATURE_DELETION: 3/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 3149666020,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"session.epoch <= state.epoch and state.settled and session.subject == state.subject\"\n}",
+      "completion_tokens": 24,
+      "decoding": 5,
+      "expression": "session.epoch <= state.epoch and state.settled and session.subject == state.subject",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 3/7 security case(s) failed",
+        "FEATURE_DELETION: 3/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 589666534,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\"expression\": \"session.subject == state.subject and session.epoch >= state.epoch and state.settled\"}",
+      "completion_tokens": 22,
+      "decoding": 6,
+      "expression": "session.subject == state.subject and session.epoch >= state.epoch and state.settled",
+      "prompt_tokens": 349,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 4215721081,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{ \"expression\": \"session.subject == state.subject and session.epoch <= state.epoch and state.settled\" }",
+      "completion_tokens": 24,
+      "decoding": 7,
+      "expression": "session.subject == state.subject and session.epoch <= state.epoch and state.settled",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 3/7 security case(s) failed",
+        "FEATURE_DELETION: 3/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 2476339219,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "markdown code fence is not allowed by the strict envelope",
+      "admitted": false,
+      "completion": "```json\n{\n  \"expression\": \"session.subject == state.subject and not state.settled and session.epoch >= state.epoch\"\n}\n```",
+      "completion_tokens": 30,
+      "decoding": 8,
+      "expression": null,
+      "prompt_tokens": 349,
+      "reasons": [
+        "NO_EXPRESSION: no candidate expression was admitted, nothing to grade"
+      ],
+      "reward": 0.0,
+      "seed": 2065184983,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\"expression\": \"session.subject == state.subject and session.epoch <= state.epoch and state.settled\"}",
+      "completion_tokens": 22,
+      "decoding": 9,
+      "expression": "session.subject == state.subject and session.epoch <= state.epoch and state.settled",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 3/7 security case(s) failed",
+        "FEATURE_DELETION: 3/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 3156760658,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n    \"expression\": \"session.subject == state.subject and state.settled and session.epoch >= state.epoch\"\n}",
+      "completion_tokens": 25,
+      "decoding": 10,
+      "expression": "session.subject == state.subject and state.settled and session.epoch >= state.epoch",
+      "prompt_tokens": 349,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 3052022519,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\"expression\": \"session.subject == state.subject and not state.settled and session.epoch >= state.epoch\"}",
+      "completion_tokens": 23,
+      "decoding": 11,
+      "expression": "session.subject == state.subject and not state.settled and session.epoch >= state.epoch",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 2/7 security case(s) failed",
+        "FEATURE_DELETION: 6/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 1370162384,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"session.subject == state.subject and session.epoch <= state.epoch and state.settled\"\n}",
+      "completion_tokens": 25,
+      "decoding": 12,
+      "expression": "session.subject == state.subject and session.epoch <= state.epoch and state.settled",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 3/7 security case(s) failed",
+        "FEATURE_DELETION: 3/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 120882035,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n\"expression\": \"session.subject == state.subject and state.settled and session.epoch >= state.epoch\"\n}",
+      "completion_tokens": 24,
+      "decoding": 13,
+      "expression": "session.subject == state.subject and state.settled and session.epoch >= state.epoch",
+      "prompt_tokens": 349,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 390833247,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "HOLDS"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n    \"expression\": \"(session.subject == state.subject) and (session.epoch <= state.epoch) and state.settled\"\n}",
+      "completion_tokens": 28,
+      "decoding": 14,
+      "expression": "(session.subject == state.subject) and (session.epoch <= state.epoch) and state.settled",
+      "prompt_tokens": 349,
+      "reasons": [
+        "SECURITY: 3/7 security case(s) failed",
+        "FEATURE_DELETION: 3/6 benign case(s) failed"
+      ],
+      "reward": 0.0,
+      "seed": 3428647141,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "VIOLATED"
+    },
+    {
+      "admission_reason": "one JSON object with a single non-empty string field 'expression'",
+      "admitted": true,
+      "completion": "{\n  \"expression\": \"session.subject == state.subject and state.settled and session.epoch >= state.epoch\"\n}",
+      "completion_tokens": 25,
+      "decoding": 15,
+      "expression": "session.subject == state.subject and state.settled and session.epoch >= state.epoch",
+      "prompt_tokens": 349,
+      "reasons": [
+        "all obligation checks satisfied"
+      ],
+      "reward": 1.0,
+      "seed": 1346191668,
+      "task_id": "state_drift_revocation_epoch_01",
+      "verdict": "HOLDS"
+    }
+  ],
+  "seed": 20261120,
+  "spec_sha256": "4cacb44dc36714e05a85f70b648c3f5859016c672e233ade5b44939855eb22ee",
+  "status": "complete",
+  "token_accounting": "tokenizer",
+  "utc_end": "2026-11-21T04:29:06Z",
+  "utc_start": "2026-11-21T04:27:47Z",
+  "wall_time_s": 79.465
+}

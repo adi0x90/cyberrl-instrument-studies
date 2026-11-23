@@ -1,0 +1,131 @@
+{
+  "id": "canonicalization_identity_fold_02",
+  "family": "canonicalization",
+  "polarity_sensitive": true,
+  "source": "\"\"\"Account identity folding for federated claims.\"\"\"\n\nimport unicodedata\n\n\ndef fold(handle):\n    return unicodedata.normalize(\"NFKC\", handle).casefold()\n\n\ndef claims_account(authenticated_handle, claimed_handle):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def claims_account",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "A claimed handle denotes the authenticated account only when both handles fold, under NFKC plus casefold, to the identical string.",
+  "security_cases": [
+    {
+      "id": "s1_cyrillic_homoglyph",
+      "call": "claims_account(\"alice\", \"\\u0430lice\")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_zero_width_space",
+      "call": "claims_account(\"alice\", \"alice\\u200b\")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_trailing_space",
+      "call": "claims_account(\"admin\", \"Admin \")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_non_breaking_space",
+      "call": "claims_account(\"user\", \"user\\u00a0\")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_path_suffix_handle",
+      "call": "claims_account(\"bob\", \"bob/user\")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_ideographic_space",
+      "call": "claims_account(\"kim\", \"kim\\u3000\")",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_exact_handle",
+      "call": "claims_account(\"alice\", \"alice\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_case_variant",
+      "call": "claims_account(\"Alice\", \"alice\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_all_caps",
+      "call": "claims_account(\"bob\", \"BOB\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_combining_accent",
+      "call": "claims_account(\"caf\\u00e9\", \"cafe\\u0301\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_sharp_s",
+      "call": "claims_account(\"stra\\u00dfe\", \"STRASSE\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_precomposed_accent",
+      "call": "claims_account(\"n\\u00e9e\", \"ne\\u0301e\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b7_mixed_case_dotted",
+      "call": "claims_account(\"J.Doe\", \"j.doe\")",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "fold(authenticated_handle) == fold(claimed_handle)",
+  "alternate_fixes": [
+    "fold(claimed_handle) == fold(authenticated_handle)",
+    "unicodedata.normalize(\"NFKC\", authenticated_handle).casefold() == unicodedata.normalize(\"NFKC\", claimed_handle).casefold()",
+    "fold(authenticated_handle) == fold(claimed_handle) and len(fold(claimed_handle)) == len(fold(authenticated_handle))"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "authenticated_handle == claimed_handle",
+      "why": "Compares raw handles byte-for-byte, refusing the Cyrillic homoglyph while also refusing every legitimate case variant and canonically equivalent accent form."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "fold(claimed_handle).startswith(fold(authenticated_handle))",
+      "why": "Accepts any claimed handle that begins with the authenticated one, so 'bob/user' and 'alice\\u200b' are treated as the same account."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Denies every claim, so no legitimate federated login can succeed."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and (fold(claimed_handle).startswith(fold(authenticated_handle)))",
+      "why": "Wraps the prefix test in 'True and (...)', leaving homoglyph-shaped suffix claims accepted."
+    }
+  ],
+  "polarity": {
+    "fact": "A claimed handle denotes the authenticated account only when the two folded forms are equal; a merely non-equal form must never be accepted as the same account.",
+    "correct_marker": [
+      "=="
+    ],
+    "converse_marker": [
+      "!="
+    ]
+  }
+}

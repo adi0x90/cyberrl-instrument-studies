@@ -1,0 +1,134 @@
+{
+  "id": "bounds_header_budget_02",
+  "family": "bounds",
+  "polarity_sensitive": false,
+  "source": "\"\"\"Header block admission with count and byte budgets.\"\"\"\n\n\nclass HeaderBudget:\n    def __init__(self, max_count, max_bytes):\n        self.max_count = max_count\n        self.max_bytes = max_bytes\n\n\ndef headers_ok(values, budget):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def headers_ok",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "A header block is admissible only when its field count is within the count budget, the sum of its field value lengths is within the byte budget, and no value contains CR, LF or NUL.",
+  "security_cases": [
+    {
+      "id": "s1_count_over_by_one",
+      "call": "headers_ok([\"a\"] * 101, HeaderBudget(100, 8192))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_bytes_over_budget",
+      "call": "headers_ok([\"x\" * 30, \"x\" * 30, \"x\" * 30], HeaderBudget(100, 64))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_crlf_injection",
+      "call": "headers_ok([\"ok\", \"bad\\r\\nInjected: 1\"], HeaderBudget(100, 8192))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_nul_byte",
+      "call": "headers_ok([\"bad\\x00value\"], HeaderBudget(100, 8192))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_bare_lf",
+      "call": "headers_ok([\"a\\nb\"], HeaderBudget(100, 8192))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_many_long_values",
+      "call": "headers_ok([\"a\" * 100] * 100, HeaderBudget(100, 1000))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s7_crlf_only_value",
+      "call": "headers_ok([\"\\r\\n\"], HeaderBudget(100, 8192))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s8_bytes_over_by_one",
+      "call": "headers_ok([\"a\" * 65], HeaderBudget(10, 64))",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_single_header",
+      "call": "headers_ok([\"a\"], HeaderBudget(100, 8192))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_exact_byte_cap",
+      "call": "headers_ok([\"a\" * 64], HeaderBudget(10, 64))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_exact_count_cap",
+      "call": "headers_ok([\"a\"] * 100, HeaderBudget(100, 8192))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_exact_both_caps",
+      "call": "headers_ok([\"x\" * 10, \"y\" * 10], HeaderBudget(2, 20))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_empty_block",
+      "call": "headers_ok([], HeaderBudget(0, 0))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_tab_in_value",
+      "call": "headers_ok([\"\\t\"], HeaderBudget(10, 64))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b7_typical_browser_block",
+      "call": "headers_ok([\"text/html\", \"gzip, deflate\", \"https://app.example.com\"], HeaderBudget(20, 512))",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "len(values) <= budget.max_count and sum(len(v) for v in values) <= budget.max_bytes and all(\"\\r\" not in v and \"\\n\" not in v and \"\\x00\" not in v for v in values)",
+  "alternate_fixes": [
+    "budget.max_count >= len(values) and sum(map(len, values)) <= budget.max_bytes and not any(c in v for v in values for c in \"\\r\\n\\x00\")",
+    "len(values) <= budget.max_count and sum(len(v) for v in values) <= budget.max_bytes and all(not (\"\\r\" in v or \"\\n\" in v or \"\\x00\" in v) for v in values)",
+    "all([len(values) <= budget.max_count, sum(len(v) for v in values) <= budget.max_bytes, all(c not in v for v in values for c in (\"\\r\", \"\\n\", \"\\x00\"))])"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "len(values) <= budget.max_count and sum(len(v) for v in values) <= budget.max_bytes and all(\"\\r\" not in v and \"\\n\" not in v and \"\\x00\" not in v for v in values) and all(len(v) <= 32 for v in values)",
+      "why": "Adds an undocumented 32-byte per-header cap, refusing the maximum-length single header the policy permits."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "len(values) <= budget.max_count and all(\"\\r\" not in v and \"\\n\" not in v and \"\\x00\" not in v for v in values)",
+      "why": "Drops the aggregate byte budget, so a block whose values sum past the cap is admitted."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Refuses every header block, so no legitimate request can be admitted."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and (len(values) <= budget.max_count and sum(len(v) for v in values) <= budget.max_bytes)",
+      "why": "Wraps the two numeric budgets in 'True and (...)', leaving CR/LF/NUL value hygiene unchecked."
+    }
+  ]
+}

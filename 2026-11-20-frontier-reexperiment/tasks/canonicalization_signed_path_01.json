@@ -1,0 +1,137 @@
+{
+  "id": "canonicalization_signed_path_01",
+  "family": "canonicalization",
+  "polarity_sensitive": true,
+  "source": "\"\"\"Signed request-target verification.\"\"\"\n\n\ndef canonicalize(path):\n    if \"%\" in path:\n        return None\n    segments = []\n    for segment in path.split(\"/\"):\n        if segment in (\"\", \".\"):\n            continue\n        if segment == \"..\":\n            if segments:\n                segments.pop()\n            continue\n        segments.append(segment)\n    return \"/\" + \"/\".join(segments)\n\n\ndef signature_valid(signed_path, request_path):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def signature_valid",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "A request target is accepted only when it is free of percent-encoding and its canonical form is identical to the canonical form of the signed path.",
+  "security_cases": [
+    {
+      "id": "s1_percent_encoded_dotdot",
+      "call": "signature_valid(\"/admin/report\", \"/admin/report/%2e%2e/secret\")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_different_resource",
+      "call": "signature_valid(\"/admin/report\", \"/admin/secret\")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_dotdot_escape",
+      "call": "signature_valid(\"/admin/report\", \"/admin/report/../../root/secret\")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_percent_encoded_nul",
+      "call": "signature_valid(\"/admin/report\", \"/admin/report%00.png\")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_case_variant_path",
+      "call": "signature_valid(\"/admin/report\", \"/ADMIN/report\")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_backslash_separator",
+      "call": "signature_valid(\"/admin/report\", \"/admin\\\\report\")",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s7_percent_encoded_slash",
+      "call": "signature_valid(\"/admin/report\", \"/admin%2freport\")",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_exact_match",
+      "call": "signature_valid(\"/admin/report\", \"/admin/report\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_duplicate_slashes",
+      "call": "signature_valid(\"/admin/report\", \"//admin//report\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_trailing_slash",
+      "call": "signature_valid(\"/admin/report\", \"/admin/report/\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_single_dot_segment",
+      "call": "signature_valid(\"/admin/report\", \"/admin/./report\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_relative_form",
+      "call": "signature_valid(\"/admin/report\", \"admin/report\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_root_resource",
+      "call": "signature_valid(\"/\", \"/\")",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b7_nested_path_trailing_slash",
+      "call": "signature_valid(\"/api/v1/orders\", \"/api/v1/orders/\")",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "canonicalize(request_path) is not None and canonicalize(request_path) == canonicalize(signed_path)",
+  "alternate_fixes": [
+    "canonicalize(request_path) == canonicalize(signed_path)",
+    "canonicalize(signed_path) == canonicalize(request_path) and canonicalize(request_path) is not None",
+    "not (canonicalize(request_path) is None) and canonicalize(request_path) == canonicalize(signed_path)"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "request_path == signed_path",
+      "why": "Requires byte-identical request targets, refusing the encoded traversal PoC but also every legitimate duplicate-slash and dot-segment form."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "canonicalize(request_path) is None or canonicalize(request_path) == canonicalize(signed_path)",
+      "why": "Treats an uncanonicalizable percent-encoded target as acceptable, so the encoded traversal is admitted."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Rejects every request target, so no legitimate signed request can be served."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and (canonicalize(request_path) is None or canonicalize(request_path) == canonicalize(signed_path))",
+      "why": "Wraps the percent-tolerant guard in 'True and (...)', leaving encoded traversal admitted."
+    }
+  ],
+  "polarity": {
+    "fact": "The canonicalized request target must be equal to the canonicalized signed path; a merely different canonical form must never be accepted.",
+    "correct_marker": [
+      "=="
+    ],
+    "converse_marker": [
+      "!="
+    ]
+  }
+}

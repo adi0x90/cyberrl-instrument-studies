@@ -1,0 +1,137 @@
+{
+  "id": "cookie_hostonly_forward_02",
+  "family": "cookie",
+  "polarity_sensitive": true,
+  "source": "\"\"\"Host-only cookie forwarding gate.\"\"\"\n\n\nclass Cookie:\n    def __init__(self, name, host, secure):\n        self.name = name\n        self.host = host\n        self.secure = secure\n\n\nclass Request:\n    def __init__(self, host, secure):\n        self.host = host\n        self.secure = secure\n\n\ndef may_attach(cookie, request):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def may_attach",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "A host-only cookie is attached only to a request whose host is identical to the cookie's origin host, and a Secure cookie only to a TLS request.",
+  "security_cases": [
+    {
+      "id": "s1_cross_origin_host",
+      "call": "may_attach(Cookie(\"sid\", \"app.example.com\", False), Request(\"evil.example.com\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_subdomain_request",
+      "call": "may_attach(Cookie(\"sid\", \"app.example.com\", False), Request(\"sub.app.example.com\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_parent_origin_request",
+      "call": "may_attach(Cookie(\"sid\", \"example.com\", False), Request(\"app.example.com\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_secure_over_plaintext",
+      "call": "may_attach(Cookie(\"sid\", \"app.example.com\", True), Request(\"app.example.com\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_suffix_confusion_host",
+      "call": "may_attach(Cookie(\"sid\", \"app.example.com\", False), Request(\"app.example.com.evil.io\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_trailing_space_host",
+      "call": "may_attach(Cookie(\"sid\", \"app.example.com\", False), Request(\"app.example.com \", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s7_path_smuggling_host",
+      "call": "may_attach(Cookie(\"sid\", \"app.example.com\", False), Request(\"app.example.com/../evil\", False))",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_exact_origin_tls",
+      "call": "may_attach(Cookie(\"sid\", \"app.example.com\", True), Request(\"app.example.com\", True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_plaintext_non_secure",
+      "call": "may_attach(Cookie(\"sid\", \"app.example.com\", False), Request(\"app.example.com\", False))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_tls_non_secure",
+      "call": "may_attach(Cookie(\"sid\", \"app.example.com\", False), Request(\"app.example.com\", True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_second_origin",
+      "call": "may_attach(Cookie(\"api\", \"api.example.com\", True), Request(\"api.example.com\", True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_localhost",
+      "call": "may_attach(Cookie(\"sid\", \"localhost\", False), Request(\"localhost\", False))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_loopback_ip",
+      "call": "may_attach(Cookie(\"sid\", \"127.0.0.1\", False), Request(\"127.0.0.1\", False))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b7_subdomain_own_origin",
+      "call": "may_attach(Cookie(\"sid\", \"sub.app.example.com\", True), Request(\"sub.app.example.com\", True))",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "request.host == cookie.host and (request.secure or not cookie.secure)",
+  "alternate_fixes": [
+    "(request.secure or not cookie.secure) and request.host == cookie.host",
+    "request.host == cookie.host and (cookie.secure <= request.secure)",
+    "request.host == cookie.host if (not cookie.secure or request.secure) else False"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "request.host == cookie.host and request.secure",
+      "why": "Requires TLS on every dispatch, so the cross-origin PoC is refused but plaintext same-origin forwarding is lost."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "request.host == cookie.host",
+      "why": "Never checks transport, so a Secure cookie is attached to a plaintext request."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Withholds every cookie, so no legitimate same-origin request receives its session cookie."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and (request.host == cookie.host)",
+      "why": "Wraps the host check in 'True and (...)', dropping the Secure-transport obligation."
+    }
+  ],
+  "polarity": {
+    "fact": "A host-only cookie may be attached only when the request host is equal to the cookie's origin host; any merely different host must be refused.",
+    "correct_marker": [
+      "=="
+    ],
+    "converse_marker": [
+      "!="
+    ]
+  }
+}

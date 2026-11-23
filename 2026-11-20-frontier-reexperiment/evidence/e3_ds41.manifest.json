@@ -1,0 +1,74 @@
+{
+  "abort_reason": null,
+  "argv": [
+    "run_e3.py",
+    "--models",
+    "deepseek/deepseek-v4.1-flash-1017",
+    "--out",
+    "results/e3_ds41.jsonl"
+  ],
+  "config_drift": [],
+  "decodings": {
+    "0": {
+      "seed": 20261120,
+      "temperature": 0.0
+    },
+    "1": {
+      "seed": 20261121,
+      "temperature": 0.3
+    },
+    "2": {
+      "seed": 20261122,
+      "temperature": 0.7
+    }
+  },
+  "experiment": "E3",
+  "git_sha": "unknown",
+  "limit": null,
+  "mock": false,
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "out": "results/e3_ds41.jsonl",
+  "python": "3.12.3",
+  "records_skipped": 0,
+  "records_written": 60,
+  "seed": 20261120,
+  "status": "complete",
+  "task_sha256": {
+    "authz_delegated_scope_02.json": "f2fd17eab3a1195fe013f552af869aedb7b622d691cd45cbf858fc011b31a02c",
+    "authz_delegated_write_01.json": "b6f81c6d9600157c4fe2b77d0cf9acb5ec89ef077045abc5d62c5ec54863f332",
+    "bounds_content_length_01.json": "fd056e2f04955d3202a45b459c33de81895719b82f45ca9b80b94d0da42df23a",
+    "bounds_header_budget_02.json": "447080c2a10fe6d09a56ee294a0216598e8b14e4c52292cbb80ebc2ae16fb533",
+    "canonicalization_identity_fold_02.json": "c6b7596291bd8c413012b3ff913701e21d8536725824bc811cb9c85f48436cbf",
+    "canonicalization_signed_path_01.json": "788c17e6b053553ca5b110ec5a24169bad1628bd5c6f77604ea4cf30738d1578",
+    "containment_cidr_block_02.json": "df8a6094f43ad3834435c4c4c7b02d70ad83ac1eb738ea8811f750ad7d487953",
+    "containment_path_prefix_01.json": "a223c8173f84f252f3fc28b85f50a88e00e2ef83c2f0b5aca0ba73650f95fc73",
+    "cookie_host_prefix_01.json": "0c9ff42bd9f3274d51fbeee9debe945c1cab7f2a6dfe6aaec26eb0470d07c273",
+    "cookie_hostonly_forward_02.json": "2378ec06974fa49cfe6654ce5ca9aad2d78694b72d2df87f9c187b1286d1fa5c",
+    "state_drift_quorum_generation_02.json": "ef29a2fd191e5e42b9697135969dd17b3eb77dc7c9d9ce64577236bc6500d874",
+    "state_drift_revocation_epoch_01.json": "48cdeeb18c866a08f6ff4196275cb02f7d5e67ebca0061a5dfaa4886bcd1b202"
+  },
+  "task_sha256_drift": [],
+  "tasks_selected": [
+    "authz_delegated_scope_02",
+    "authz_delegated_write_01",
+    "bounds_content_length_01",
+    "canonicalization_identity_fold_02",
+    "canonicalization_signed_path_01",
+    "containment_cidr_block_02",
+    "containment_path_prefix_01",
+    "cookie_host_prefix_01",
+    "cookie_hostonly_forward_02",
+    "state_drift_revocation_epoch_01"
+  ],
+  "tasks_skipped_not_polarity_sensitive": [
+    "bounds_header_budget_02",
+    "state_drift_quorum_generation_02"
+  ],
+  "utc": "2026-11-20T13:23:41Z",
+  "variants": [
+    "explicit",
+    "neutral"
+  ]
+}

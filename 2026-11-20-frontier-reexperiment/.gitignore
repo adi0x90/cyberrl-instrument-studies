@@ -1,0 +1,8 @@
+results/*/
+results/REPORT.md
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+results/*.jsonl
+results/*.manifest.json

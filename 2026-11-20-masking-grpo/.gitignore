@@ -1,0 +1,5 @@
+results/adapters/
+__pycache__/
+.pytest_cache/
+*.log
+results7b/adapters/

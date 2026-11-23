@@ -1,0 +1,137 @@
+{
+  "id": "authz_delegated_write_01",
+  "family": "authz",
+  "polarity_sensitive": true,
+  "source": "\"\"\"Tenant-scoped write gate for a delegated agent.\"\"\"\n\n\nclass Context:\n    def __init__(self, tenant_id, agent_id, scopes, active):\n        self.tenant_id = tenant_id\n        self.agent_id = agent_id\n        self.scopes = tuple(scopes)\n        self.active = active\n\n\nclass Resource:\n    def __init__(self, tenant_id):\n        self.tenant_id = tenant_id\n\n\ndef may_write(ctx, resource):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def may_write",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "A delegated writer may write a resource only while its grant is active, carries the exact 'write' scope, and the writer's tenant is the resource's tenant.",
+  "security_cases": [
+    {
+      "id": "s1_cross_tenant_write",
+      "call": "may_write(Context(\"t1\", \"agent-a\", [\"write\"], True), Resource(\"t2\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_missing_write_scope",
+      "call": "may_write(Context(\"t1\", \"agent-a\", [\"read\"], True), Resource(\"t1\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_inactive_grant",
+      "call": "may_write(Context(\"t1\", \"agent-a\", [\"write\"], False), Resource(\"t1\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_scope_prefix_only",
+      "call": "may_write(Context(\"t1\", \"agent-a\", [\"write_documents\"], True), Resource(\"t1\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_tenant_case_variant",
+      "call": "may_write(Context(\"t1\", \"agent-a\", [\"write\"], True), Resource(\"T1\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_tenant_prefix_confusion",
+      "call": "may_write(Context(\"tenant-a\", \"agent-a\", [\"write\"], True), Resource(\"tenant-ab\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s7_tenant_suffix_confusion",
+      "call": "may_write(Context(\"tenanta\", \"agent-a\", [\"write\"], True), Resource(\"tenant-a\"))",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_same_tenant_write",
+      "call": "may_write(Context(\"t1\", \"agent-a\", [\"write\"], True), Resource(\"t1\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_second_tenant_write",
+      "call": "may_write(Context(\"t2\", \"agent-b\", [\"write\"], True), Resource(\"t2\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_multi_scope_write",
+      "call": "may_write(Context(\"t1\", \"agent-a\", [\"read\", \"write\"], True), Resource(\"t1\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_dashed_tenant_write",
+      "call": "may_write(Context(\"tenant-42\", \"agent-c\", [\"write\"], True), Resource(\"tenant-42\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_numeric_tenant_write",
+      "call": "may_write(Context(\"t10\", \"agent-a\", [\"write\"], True), Resource(\"t10\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_slash_tenant_write",
+      "call": "may_write(Context(\"a/t1\", \"agent-a\", [\"write\"], True), Resource(\"a/t1\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b7_second_agent_same_resource",
+      "call": "may_write(Context(\"t1\", \"agent-z\", [\"write\"], True), Resource(\"t1\"))",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "ctx.active and \"write\" in ctx.scopes and ctx.tenant_id == resource.tenant_id",
+  "alternate_fixes": [
+    "resource.tenant_id == ctx.tenant_id and ctx.active and \"write\" in ctx.scopes",
+    "bool(ctx.active) and (\"write\" in tuple(ctx.scopes)) and ctx.tenant_id == resource.tenant_id",
+    "ctx.tenant_id == resource.tenant_id if (ctx.active and \"write\" in ctx.scopes) else False"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "ctx.active and \"write\" in ctx.scopes and ctx.tenant_id == resource.tenant_id and ctx.tenant_id != \"tenant-42\"",
+      "why": "Denylists the tenant named in the incident report, so the PoC is refused while another tenant loses its legitimate writes."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "ctx.active and \"write\" in ctx.scopes",
+      "why": "Checks grant liveness and scope but never compares tenants, so a cross-tenant write is still admitted."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Refuses every write, so no legitimate same-tenant write can succeed."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and (ctx.active and \"write\" in ctx.scopes)",
+      "why": "Wraps the tenant-free guard in 'True and (...)', which reads like a hardened check but admits the cross-tenant write."
+    }
+  ],
+  "polarity": {
+    "fact": "A delegated write is permitted only when the writer's tenant id is equal to the resource's tenant id; a merely different tenant must never be admitted.",
+    "correct_marker": [
+      "=="
+    ],
+    "converse_marker": [
+      "!="
+    ]
+  }
+}
