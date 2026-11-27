@@ -1,0 +1,359 @@
+{
+  "n_per_task": 10000,
+  "tasks": [
+    {
+      "task_id": "authz_delegated_scope_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 181,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.4901,
+        "p50": 0.4141,
+        "p95": 0.8202,
+        "p99": 1.4175
+      },
+      "property_ms": {
+        "mean": 4.4522,
+        "p50": 3.9091,
+        "p95": 7.5616,
+        "p99": 12.6662
+      },
+      "delta_ms": {
+        "mean": 3.962,
+        "p50": 3.4962,
+        "p95": 6.6406,
+        "p99": 11.1212
+      },
+      "oracle_build_ms": 8.874,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "authz_delegated_write_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 152,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.5619,
+        "p50": 0.489,
+        "p95": 0.8379,
+        "p99": 1.6016
+      },
+      "property_ms": {
+        "mean": 4.3324,
+        "p50": 4.0047,
+        "p95": 6.4429,
+        "p99": 9.5373
+      },
+      "delta_ms": {
+        "mean": 3.7705,
+        "p50": 3.5107,
+        "p95": 5.615,
+        "p99": 8.388
+      },
+      "oracle_build_ms": 10.169,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "bounds_content_length_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 17,
+      "property_cases": 162,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.327,
+        "p50": 0.2956,
+        "p95": 0.4343,
+        "p99": 1.0604
+      },
+      "property_ms": {
+        "mean": 2.2395,
+        "p50": 2.1413,
+        "p95": 2.7296,
+        "p99": 3.2723
+      },
+      "delta_ms": {
+        "mean": 1.9125,
+        "p50": 1.8225,
+        "p95": 2.3593,
+        "p99": 2.8733
+      },
+      "oracle_build_ms": 6.44,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "bounds_header_budget_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 15,
+      "property_cases": 184,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.4916,
+        "p50": 0.4445,
+        "p95": 0.6696,
+        "p99": 1.2667
+      },
+      "property_ms": {
+        "mean": 7.0892,
+        "p50": 6.475,
+        "p95": 9.3009,
+        "p99": 13.4938
+      },
+      "delta_ms": {
+        "mean": 6.5976,
+        "p50": 6.0312,
+        "p95": 8.642,
+        "p99": 12.9711
+      },
+      "oracle_build_ms": 27.33,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "canonicalization_identity_fold_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 13,
+      "property_cases": 114,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.1622,
+        "p50": 0.1522,
+        "p95": 0.1982,
+        "p99": 0.2735
+      },
+      "property_ms": {
+        "mean": 1.0936,
+        "p50": 1.0375,
+        "p95": 1.2598,
+        "p99": 1.6525
+      },
+      "delta_ms": {
+        "mean": 0.9314,
+        "p50": 0.8807,
+        "p95": 1.0932,
+        "p99": 1.4674
+      },
+      "oracle_build_ms": 3.595,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "canonicalization_signed_path_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 156,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.2686,
+        "p50": 0.2463,
+        "p95": 0.3626,
+        "p99": 0.6455
+      },
+      "property_ms": {
+        "mean": 1.7925,
+        "p50": 1.6924,
+        "p95": 2.2929,
+        "p99": 2.799
+      },
+      "delta_ms": {
+        "mean": 1.5239,
+        "p50": 1.4387,
+        "p95": 1.9634,
+        "p99": 2.4239
+      },
+      "oracle_build_ms": 4.038,
+      "oracle_ambiguous_fraction": 0.423077,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "containment_cidr_block_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 16,
+      "property_cases": 200,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.4922,
+        "p50": 0.4527,
+        "p95": 0.6083,
+        "p99": 1.1625
+      },
+      "property_ms": {
+        "mean": 4.0006,
+        "p50": 3.8986,
+        "p95": 4.3445,
+        "p99": 4.8889
+      },
+      "delta_ms": {
+        "mean": 3.5084,
+        "p50": 3.4144,
+        "p95": 3.8564,
+        "p99": 4.3802
+      },
+      "oracle_build_ms": 10.324,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "containment_path_prefix_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 145,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.2735,
+        "p50": 0.2538,
+        "p95": 0.3397,
+        "p99": 0.8337
+      },
+      "property_ms": {
+        "mean": 1.9235,
+        "p50": 1.8466,
+        "p95": 2.152,
+        "p99": 2.6897
+      },
+      "delta_ms": {
+        "mean": 1.6499,
+        "p50": 1.5799,
+        "p95": 1.8894,
+        "p99": 2.3763
+      },
+      "oracle_build_ms": 5.364,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "cookie_host_prefix_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 149,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.293,
+        "p50": 0.2683,
+        "p95": 0.3639,
+        "p99": 0.9235
+      },
+      "property_ms": {
+        "mean": 2.1213,
+        "p50": 2.0454,
+        "p95": 2.3728,
+        "p99": 2.6858
+      },
+      "delta_ms": {
+        "mean": 1.8283,
+        "p50": 1.7578,
+        "p95": 2.0879,
+        "p99": 2.3642
+      },
+      "oracle_build_ms": 5.912,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "cookie_hostonly_forward_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 93,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.319,
+        "p50": 0.2925,
+        "p95": 0.4028,
+        "p99": 0.8712
+      },
+      "property_ms": {
+        "mean": 1.7304,
+        "p50": 1.6493,
+        "p95": 1.9793,
+        "p99": 2.4988
+      },
+      "delta_ms": {
+        "mean": 1.4113,
+        "p50": 1.3423,
+        "p95": 1.6653,
+        "p99": 2.1452
+      },
+      "oracle_build_ms": 4.187,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "state_drift_quorum_generation_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 181,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.3276,
+        "p50": 0.3008,
+        "p95": 0.4014,
+        "p99": 0.8904
+      },
+      "property_ms": {
+        "mean": 2.8505,
+        "p50": 2.766,
+        "p95": 3.1519,
+        "p99": 3.6598
+      },
+      "delta_ms": {
+        "mean": 2.5229,
+        "p50": 2.4429,
+        "p95": 2.832,
+        "p99": 3.3042
+      },
+      "oracle_build_ms": 7.488,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "state_drift_revocation_epoch_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 13,
+      "property_cases": 149,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.3118,
+        "p50": 0.2848,
+        "p95": 0.4,
+        "p99": 0.888
+      },
+      "property_ms": {
+        "mean": 2.4824,
+        "p50": 2.3733,
+        "p95": 2.8284,
+        "p99": 3.7994
+      },
+      "delta_ms": {
+        "mean": 2.1706,
+        "p50": 2.0673,
+        "p95": 2.5081,
+        "p99": 3.3798
+      },
+      "oracle_build_ms": 6.393,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    }
+  ],
+  "aggregate": {
+    "delta_p50_ms_mean_across_tasks": 2.4821,
+    "delta_p50_ms_max": 6.0312,
+    "wall_seconds": null,
+    "note": "per-candidate delta; serial uncontended run (no co-resident workers)"
+  }
+}

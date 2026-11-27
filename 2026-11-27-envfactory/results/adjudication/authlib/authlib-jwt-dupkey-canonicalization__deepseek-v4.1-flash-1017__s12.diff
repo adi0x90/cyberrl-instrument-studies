@@ -1,0 +1,49 @@
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -121,11 +121,13 @@
+         :raise: InvalidGrantError
+         """
+         headers, claims = self.extract_assertion(assertion)
++        canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
+         # "iss" is read before the signature and the claims are verified, so it
+         # cannot be assumed to be present nor to be a string.
+-        if "iss" not in claims:
++        if "iss" not in canonical:
+             raise InvalidGrantError(description="Missing claim: 'iss'")
+ 
+-        issuer = claims["iss"]
++        issuer = canonical["iss"]
+         if not isinstance(issuer, str):
+             raise InvalidGrantError(description="Invalid claim: 'iss'")
+ 
+@@ -155,7 +157,6 @@
+         # claims are validated against their canonical, duplicate-free
+         # projection, so validation sees a deterministic form of the
+         # assertion regardless of duplicate JSON member names
+-        canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
+         self.verify_claims(canonical)
+         self._verify_asserted_scope(canonical, client)
+         self.canonical_claims = canonical
+@@ -198,8 +199,8 @@
+         if not assertion:
+             raise InvalidRequestError("Missing 'assertion' in request")
+ 
+-        claims = self.process_assertion_claims(assertion)
+-        client = self.resolve_issuer_client(claims["iss"])
++        self.process_assertion_claims(assertion)
++        client = self.resolve_issuer_client(self.canonical_claims["iss"])
+         log.debug("Validate token request of %s", client)
+ 
+         if not client.check_grant_type(self.GRANT_TYPE):
+@@ -214,10 +215,10 @@
+         # against the client's registered scopes and now defines the scope
+         # policy of this grant
+         if self.canonical_claims.get("scope") is not None:
+-            self.requested_scope = claims.get("scope")
++            self.requested_scope = self.canonical_claims.get("scope")
+ 
+-        subject = claims.get("sub")
++        subject = self.canonical_claims.get("sub")
+         if subject:
+             user = self.authenticate_user(subject)
+             if not user:

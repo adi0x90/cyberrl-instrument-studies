@@ -1,0 +1,40 @@
+{
+  "n_per_task": 10000,
+  "tasks": [
+    {
+      "task_id": "bounds_content_length_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 17,
+      "property_cases": 162,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 0.3926,
+        "p50": 0.3489,
+        "p95": 0.5824,
+        "p99": 1.254
+      },
+      "property_ms": {
+        "mean": 2.7045,
+        "p50": 2.4729,
+        "p95": 3.8193,
+        "p99": 7.3555
+      },
+      "delta_ms": {
+        "mean": 2.312,
+        "p50": 2.1022,
+        "p95": 3.2575,
+        "p99": 6.6306
+      },
+      "oracle_build_ms": 9.068,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    }
+  ],
+  "aggregate": {
+    "delta_p50_ms_mean_across_tasks": 2.1022,
+    "delta_p50_ms_max": 2.1022,
+    "wall_seconds": 31.2,
+    "note": "per-candidate delta; already includes the full generated case set per call"
+  }
+}

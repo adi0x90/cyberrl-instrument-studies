@@ -1,0 +1,1445 @@
+{
+  "metric": "FalseAcceptRateGivenTier1Pass",
+  "files": [
+    "evidence/scored_qwen7b.jsonl",
+    "evidence/scored_qwen14b.jsonl",
+    "evidence/scored_api.jsonl"
+  ],
+  "models": {
+    "Qwen/Qwen2.5-Coder-7B-Instruct": {
+      "pool": 384,
+      "admitted": 80,
+      "p_admitted": 0.2083,
+      "analysis": {
+        "tasks": 12,
+        "N": {
+          "1": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            }
+          },
+          "4": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            }
+          },
+          "8": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 1,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 11
+              },
+              "t1_pass": 1,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.7934567085261071
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 1,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 11
+              },
+              "t1_pass": 1,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.7934567085261071
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 1,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 11
+              },
+              "t1_pass": 1,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.7934567085261071
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "16": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 7,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 1,
+                "unknown": 4
+              },
+              "t1_pass": 7,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.35433884297520657
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 7,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 5
+              },
+              "t1_pass": 7,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.35433884297520657
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 7,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 5
+              },
+              "t1_pass": 7,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.35433884297520657
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "32": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 8,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 2,
+                "unknown": 2
+              },
+              "t1_pass": 8,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.3244156195108769
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 8,
+                "t1p_t2m": 1,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 3
+              },
+              "t1_pass": 9,
+              "far_given_t1_pass": 0.1111111111111111,
+              "far_ci": [
+                0.019890371327130535,
+                0.4350062147680601
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.375
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 8,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 4
+              },
+              "t1_pass": 8,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.3244156195108769
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Qwen/Qwen2.5-Coder-14B-Instruct": {
+      "pool": 384,
+      "admitted": 59,
+      "p_admitted": 0.1536,
+      "analysis": {
+        "tasks": 12,
+        "N": {
+          "1": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            }
+          },
+          "4": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            }
+          },
+          "8": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 0,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 12
+              },
+              "t1_pass": 0,
+              "far_given_t1_pass": null,
+              "far_ci": null,
+              "far_bootstrap95": null
+            }
+          },
+          "16": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 3,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 9
+              },
+              "t1_pass": 3,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.5615060804490177
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 3,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 9
+              },
+              "t1_pass": 3,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.5615060804490177
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 3,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 9
+              },
+              "t1_pass": 3,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.5615060804490177
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "32": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 9,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 2,
+                "unknown": 1
+              },
+              "t1_pass": 9,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2991527535509594
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 10,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 2
+              },
+              "t1_pass": 10,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2775401687666166
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 10,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 2
+              },
+              "t1_pass": 10,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2775401687666166
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    "deepseek/deepseek-v4.1-flash-1017": {
+      "pool": 384,
+      "admitted": 370,
+      "p_admitted": 0.9635,
+      "analysis": {
+        "tasks": 12,
+        "N": {
+          "1": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 11,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 1
+              },
+              "t1_pass": 11,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                2.7755575615628914e-17,
+                0.2588400172488141
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 11,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 1
+              },
+              "t1_pass": 11,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                2.7755575615628914e-17,
+                0.2588400172488141
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 11,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 1
+              },
+              "t1_pass": 11,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                2.7755575615628914e-17,
+                0.2588400172488141
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "4": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "8": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "16": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "32": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    "tencent/hy4-flash": {
+      "pool": 384,
+      "admitted": 259,
+      "p_admitted": 0.6745,
+      "analysis": {
+        "tasks": 12,
+        "N": {
+          "1": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 9,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 3
+              },
+              "t1_pass": 9,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2991527535509594
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 9,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 3
+              },
+              "t1_pass": 9,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2991527535509594
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 9,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 3
+              },
+              "t1_pass": 9,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2991527535509594
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "4": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "8": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "16": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "32": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    "z-ai/glm-5.3-flash": {
+      "pool": 384,
+      "admitted": 371,
+      "p_admitted": 0.9661,
+      "analysis": {
+        "tasks": 12,
+        "N": {
+          "1": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 11,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 1,
+                "unknown": 0
+              },
+              "t1_pass": 11,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                2.7755575615628914e-17,
+                0.2588400172488141
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 11,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 1,
+                "unknown": 0
+              },
+              "t1_pass": 11,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                2.7755575615628914e-17,
+                0.2588400172488141
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 11,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 1,
+                "unknown": 0
+              },
+              "t1_pass": 11,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                2.7755575615628914e-17,
+                0.2588400172488141
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "4": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "8": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "16": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "32": {
+            "poc": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "static": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "property": {
+              "cells": {
+                "t1p_t2p": 12,
+                "t1p_t2m": 0,
+                "t1m_t2p": 0,
+                "t1m_t2m": 0,
+                "unknown": 0
+              },
+              "t1_pass": 12,
+              "far_given_t1_pass": 0.0,
+              "far_ci": [
+                0.0,
+                0.2425007574992425
+              ],
+              "far_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

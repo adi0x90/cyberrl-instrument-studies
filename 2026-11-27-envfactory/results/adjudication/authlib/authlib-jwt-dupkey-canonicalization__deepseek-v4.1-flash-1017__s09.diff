@@ -1,0 +1,44 @@
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -142,7 +142,10 @@
+         :return: JWTClaims
+         :raise: InvalidGrantError
+         """
+-        headers, claims = self.extract_assertion(assertion)
++        headers, _ = self.extract_assertion(assertion)
++        # Parse the signed payload into its canonical, duplicate-free form
++        # before using any claim for client resolution or validation.
++        claims = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
+         # "iss" is read before the signature and the claims are verified, so it
+         # cannot be assumed to be present nor to be a string.
+         if "iss" not in claims:
+@@ -170,7 +173,7 @@
+             key = import_any_key(self.resolve_client_public_key(client))
+ 
+         try:
+-            token = jwt.decode(assertion, key)
++            jwt.decode(assertion, key)
+         except JoseError as e:
+             log.debug("Assertion Error: %r", e)
+             raise InvalidGrantError(description=e.description) from e
+@@ -179,13 +182,12 @@
+             log.debug("Assertion Error: %r", e)
+             raise InvalidGrantError("Invalid JWT assertion") from None
+ 
+-        # claims are validated against their canonical, duplicate-free
+-        # projection, so validation sees a deterministic form of the
+-        # assertion regardless of duplicate JSON member names
+-        canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
+-        self.verify_claims(canonical)
+-        self._verify_asserted_scope(canonical, client)
+-        self.canonical_claims = canonical
+-        return token.claims
++        # Use the same canonical projection for validation and for all
++        # downstream claim handling, including token issuance.
++        self.verify_claims(claims)
++        self._verify_asserted_scope(claims, client)
++        self.canonical_claims = claims
++        return claims
+ 
+     def extract_assertion(self, assertion: str):
+         try:

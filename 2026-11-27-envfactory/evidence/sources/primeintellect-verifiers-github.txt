@@ -1,0 +1,347 @@
+TITLE: GitHub - PrimeIntellect-ai/verifiers: Our library for RL environments + evals · GitHub
+SOURCE-URL: https://github.com/PrimeIntellect-ai/verifiers
+META:
+  <meta name="description" content="Our library for RL environments + evals. Contribute to PrimeIntellect-ai/verifiers development by creating an account on GitHub.">
+  <meta name="twitter:title" content="GitHub - PrimeIntellect-ai/verifiers: Our library for RL environments + evals" />
+  <meta name="twitter:description" content="Our library for RL environments + evals. Contribute to PrimeIntellect-ai/verifiers development by creating an account on GitHub." />
+  <meta property="og:title" content="GitHub - PrimeIntellect-ai/verifiers: Our library for RL environments + evals" />
+  <meta property="og:description" content="Our library for RL environments + evals. Contribute to PrimeIntellect-ai/verifiers development by creating an account on GitHub." />
+
+===== BODY =====
+
+GitHub - PrimeIntellect-ai/verifiers: Our library for RL environments + evals · GitHub 
+
+ Skip to content 
+
+ Navigation Menu
+
+ Sign in 
+
+ Products Platform GitHub Repository hosting, code review, and collaboration 
+ Copilot AI coding agent for tasks, projects, and automated work 
+
+ Build & Ship Actions CI/CD and automation 
+ Code Quality Quality analysis, fixes, and enforcement 
+ Codespaces Cloud development environments 
+
+ Secure Code Security Vulnerability detection and remediation 
+ Secret Protection Secret scanning and leak prevention 
+
+ All Features 
+
+ Developers Learn Documentation 
+ Training 
+ Certifications 
+
+ Build Build with Copilot 
+ Customize Copilot 
+ Integrations 
+
+ Explore Trending repos 
+ GitHub Sponsors 
+ Developer articles 
+
+ Changelog Changelog Your source for the latest features, improvements, and fixes across GitHub products, all in one place. 
+
+ Businesses By Stage Enterprises 
+ Team 
+ Startups 
+ Nonprofits 
+
+ By Industry Healthcare 
+ Financial services 
+ Manufacturing 
+ Government 
+ See all industries 
+
+ Evaluate GitHub Why GitHub 
+ Customer Stories 
+ Business insights 
+ Trust Center 
+
+ Add-ons GitHub Advanced Security Enterprise-grade code security 
+ Copilot for business Enterprise-grade AI features 
+ Premium Support Enterprise-grade 24/7 support 
+
+ Resources Learn & Connect Documentation 
+ Resource center 
+ Blog 
+ Events & webinars 
+ Community Forum 
+ Customer Stories 
+ Integrations 
+
+ Support Customer support 
+ Training 
+ GitHub Status 
+
+ Company About 
+ Partners 
+ Changelog 
+
+ GitHub Universe GitHub Universe The event for developers, by developers — talks, workshops, and what’s next for GitHub. 
+
+ Pricing 
+ Search / 
+
+ Sign in 
+ Sign up Appearance settings
+
+ You signed in with another tab or window. Reload to refresh your session. 
+ You signed out in another tab or window. Reload to refresh your session. 
+ You switched accounts on another tab or window. Reload to refresh your session. 
+
+ Dismiss alert 
+
+ {{ message }}
+
+ PrimeIntellect-ai 
+ verifiers 
+
+ Repository navigation
+
+ Code 
+ Issues 38 ( 38 ) 
+ Pull requests 169 ( 169 ) 
+ Discussions 
+ Actions 
+ Projects 
+ Security and quality 
+ Insights 
+
+ More items 
+
+ verifiers 
+ Public 
+
+ Notifications You must be signed in to change notification settings 
+ Fork 744 ( 744 ) 
+ Star 4.8k ( 4.8k ) You must be signed in to star a repository 
+
+ About 
+ Our library for RL environments + evals
+ Resources 
+ Readme 
+ MIT license 
+ Activity 
+ Custom properties 
+
+ Stars 
+ 4.8k stars 
+ Watchers 
+ 28 watching 
+ Forks 
+ 744 forks 
+
+ Report repository 
+
+ main 
+
+ Branches Tags 
+
+ Go to file 
+
+ Code Open more actions menu 
+
+ Latest commit
+
+ History
+ 2,721 Commits 
+ 2,721 Commits 
+
+ Folders and files
+ Name Name Last commit message 
+ Last commit date 
+
+ .github/ workflows 
+
+ .github/ workflows 
+
+ docs 
+
+ docs 
+
+ environments 
+
+ environments 
+
+ examples 
+
+ examples 
+
+ scripts 
+
+ scripts 
+
+ skills 
+
+ skills 
+
+ tests 
+
+ tests 
+
+ verifiers 
+
+ verifiers 
+
+ .gitignore 
+
+ .gitignore 
+
+ .markdownlint-cli2.yaml 
+
+ .markdownlint-cli2.yaml 
+
+ .pre-commit-config.yaml 
+
+ .pre-commit-config.yaml 
+
+ .readthedocs.yaml 
+
+ .readthedocs.yaml 
+
+ AGENTS.md 
+
+ AGENTS.md 
+
+ LICENSE 
+
+ LICENSE 
+
+ MANIFEST.in 
+
+ MANIFEST.in 
+
+ README.md 
+
+ README.md 
+
+ pyproject.toml 
+
+ pyproject.toml 
+
+ uv.lock 
+
+ uv.lock 
+
+ View all files 
+
+ Repository files navigation
+
+ README 
+ MIT license 
+
+ More items 
+
+ Overview
+
+ verifiers is our library for creating environments to train and evaluate LLMs.
+
+ verifiers is tightly integrated with the Environments Hub , as well as our training framework prime-rl and our Hosted Training platform.
+
+ Installation
+
+ We recommend installing the Prime CLI to interact with the environments.
+
+ # install uv 
+curl -LsSf https://astral.sh/uv/install.sh | sh
+ # install the prime CLI 
+uv tool install prime 
+
+ Further reading
+
+ The docs contain short, human-written guides and overviews about the architecture.
+
+ The AGENTS.md and skills are for coding agents and go into more details.
+
+ Contributing
+
+ We welcome community contributions. We use issues to track bugs and feature requests. If you hit a bug, a pain point, or have an idea for a feature, please open an issue.
+
+ Contributions are welcome via PR. Please follow these guidelines:
+
+ Install the pre-commit hooks so your code is formatted and type-checked.
+
+ Keep your PR in "Draft" until it is ready for review.
+
+ If your PR resolves an issue, link the issue in the PR description.
+
+ Run the tests for the areas you touched.
+
+ Pre-commit hooks
+
+ uv run pre-commit install 
+
+ Tests
+
+ Unit tests run one component in isolation, with no network, and mirror the verifiers/v1 layout. Integration tests run real evals: they need PRIME_API_KEY and skip without it.
+
+ uv run pytest tests/unit -n auto # unit 
+uv run pytest tests/integration -n 8 # integration 
+uv run pytest tests/integration/test_single_turn.py # one behavior 
+uv run pytest tests/integration -m " docker and codex " # one runtime and harness 
+
+ Citation
+
+ Originally created by Will Brown ( @willccbb ).
+
+ @misc { brown_verifiers_2025 ,
+ author = { William Brown } ,
+ title = { {Verifiers}: Environments for LLM Reinforcement Learning } ,
+ howpublished = { \url{https://github.com/PrimeIntellect-ai/verifiers} } ,
+ year = { 2025 } 
+} 
+
+ About 
+ Our library for RL environments + evals
+ Resources 
+ Readme 
+ MIT license 
+ Activity 
+ Custom properties 
+
+ Stars 
+ 4.8k stars 
+ Watchers 
+ 28 watching 
+ Forks 
+ 744 forks 
+
+ Report repository 
+
+ Releases 
+
+ Packages 
+
+ Used by 
+
+ Contributors 
+
+ Languages 
+
+ Footer
+
+ © 2026 GitHub, Inc.
+
+ Footer navigation
+
+ Terms 
+
+ Privacy 
+
+ Security 
+
+ Status 
+
+ Community 
+
+ Docs 
+
+ Contact 
+
+ Manage cookies
+
+ Do not share my personal information
+
+ You can’t perform that action at this time.

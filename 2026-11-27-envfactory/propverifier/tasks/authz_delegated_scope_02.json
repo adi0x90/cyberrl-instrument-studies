@@ -1,0 +1,137 @@
+{
+  "id": "authz_delegated_scope_02",
+  "family": "authz",
+  "polarity_sensitive": true,
+  "source": "\"\"\"Scope gate for delegated service calls.\"\"\"\n\n\nclass Principal:\n    def __init__(self, subject, scopes, delegated_by):\n        self.subject = subject\n        self.scopes = tuple(scopes)\n        self.delegated_by = delegated_by\n\n\nclass Operation:\n    def __init__(self, scope, delegation_allowed):\n        self.scope = scope\n        self.delegation_allowed = delegation_allowed\n\n\ndef may_invoke(principal, op):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def may_invoke",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "An operation is permitted only when its required scope is one of the principal's granted scope tokens, and an on-behalf-of principal may act only on operations that permit delegation.",
+  "security_cases": [
+    {
+      "id": "s1_scope_not_granted",
+      "call": "may_invoke(Principal(\"u1\", [\"orders:read\"], None), Operation(\"orders:write\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_superset_scope_token",
+      "call": "may_invoke(Principal(\"u1\", [\"orders:write:admin\"], None), Operation(\"orders:write\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_delegation_not_permitted",
+      "call": "may_invoke(Principal(\"u1\", [\"orders:write\"], \"svc-a\"), Operation(\"orders:write\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_no_granted_scopes",
+      "call": "may_invoke(Principal(\"u1\", [], None), Operation(\"orders:write\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_scope_case_variant",
+      "call": "may_invoke(Principal(\"u1\", [\"Orders:Write\"], None), Operation(\"orders:write\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_scope_trailing_space",
+      "call": "may_invoke(Principal(\"u1\", [\"orders:write \"], None), Operation(\"orders:write\", False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s7_scope_with_crlf",
+      "call": "may_invoke(Principal(\"u1\", [\"orders:write\"], None), Operation(\"orders:write\\r\", False))",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_direct_scope_grant",
+      "call": "may_invoke(Principal(\"u1\", [\"orders:write\"], None), Operation(\"orders:write\", False))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_multiple_scopes",
+      "call": "may_invoke(Principal(\"u1\", [\"orders:read\", \"orders:write\"], None), Operation(\"orders:write\", False))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_delegated_permitted",
+      "call": "may_invoke(Principal(\"u1\", [\"orders:write\"], \"svc-a\"), Operation(\"orders:write\", True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_delegated_permitted_b",
+      "call": "may_invoke(Principal(\"u2\", [\"orders:write\"], \"svc-b\"), Operation(\"orders:write\", True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_duplicate_scopes",
+      "call": "may_invoke(Principal(\"svc-x\", [\"orders:write\", \"orders:write\"], None), Operation(\"orders:write\", False))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_tuple_scopes",
+      "call": "may_invoke(Principal(\"u9\", (\"orders:write\",), None), Operation(\"orders:write\", False))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b7_delegated_multi_scope",
+      "call": "may_invoke(Principal(\"u1\", [\"orders:read\", \"orders:write\"], \"svc-a\"), Operation(\"orders:write\", True))",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "op.scope in principal.scopes and (principal.delegated_by is None or op.delegation_allowed)",
+  "alternate_fixes": [
+    "(principal.delegated_by is None or op.delegation_allowed) and op.scope in principal.scopes",
+    "principal.scopes.count(op.scope) > 0 and (principal.delegated_by is None or op.delegation_allowed)",
+    "op.scope in principal.scopes and not (principal.delegated_by is not None and op.delegation_allowed is False)"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "op.scope in principal.scopes and (principal.delegated_by is None or op.delegation_allowed) and op.scope != \"orders:write\"",
+      "why": "Blocks the one scope string from the PoC, refusing every legitimate order write as well."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "principal.delegated_by is None or op.delegation_allowed",
+      "why": "Never checks scope membership, so a principal holding only orders:read can invoke orders:write."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Refuses every invocation, so no legitimate in-scope call can succeed."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and (op.scope in principal.scopes)",
+      "why": "Wraps the scope-only test in 'True and (...)', silently dropping the delegation obligation."
+    }
+  ],
+  "polarity": {
+    "fact": "An operation is permitted only when its required scope is a member of the principal's granted scope tuple; a scope that is merely absent must never be admitted.",
+    "correct_marker": [
+      "in"
+    ],
+    "converse_marker": [
+      "not in"
+    ]
+  }
+}

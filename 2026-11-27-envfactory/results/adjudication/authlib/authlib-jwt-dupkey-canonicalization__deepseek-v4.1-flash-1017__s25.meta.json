@@ -1,0 +1,7 @@
+{
+  "pack": "authlib-jwt-dupkey-canonicalization",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "sample": 25,
+  "refuted_by": "pack/variants/aud-polyglot/run.sh",
+  "t1_detail": "[SAFE]    authlib-jwt-dupkey-canonicalization scenario=main: token scope safely limited to \"openid\"\n"
+}

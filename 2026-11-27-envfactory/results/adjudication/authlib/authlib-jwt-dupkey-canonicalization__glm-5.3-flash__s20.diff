@@ -1,0 +1,19 @@
+diff --git a/authlib/oauth2/rfc7523/jwt_bearer.py b/authlib/oauth2/rfc7523/jwt_bearer.py
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -146,12 +146,15 @@
+         # claims are validated against their canonical, duplicate-free
+         # projection, so validation sees a deterministic form of the
+         # assertion regardless of duplicate JSON member names
+         canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
++        if canonical.get("iss") != issuer:
++            raise InvalidGrantError(description="Invalid claim: 'iss'")
+         self.verify_claims(canonical)
+         self._verify_asserted_scope(canonical, client)
+         self.canonical_claims = canonical
+-        return token.claims
++        return canonical
+ 
+     def extract_assertion(self, assertion: str):
+         try:
+             obj = jws.extract_compact(to_bytes(assertion))

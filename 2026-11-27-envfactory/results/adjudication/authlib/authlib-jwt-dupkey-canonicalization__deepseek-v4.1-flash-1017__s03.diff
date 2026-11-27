@@ -1,0 +1,13 @@
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -161,8 +161,10 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         # projection, so validation sees a deterministic form of the
+         # assertion regardless of duplicate JSON member names
+         canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
++        if canonical.get("iss") != issuer:
++            raise InvalidGrantError(description="Invalid claim: 'iss'")
+         self.verify_claims(canonical)
+         self._verify_asserted_scope(canonical, client)
+         self.canonical_claims = canonical
+-        return token.claims
++        return canonical

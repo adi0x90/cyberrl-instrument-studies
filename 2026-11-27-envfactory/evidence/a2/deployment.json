@@ -1,0 +1,22 @@
+{
+  "image_digest": "python@sha256:191083cdf6c7bda8c76158983163ead5d5cf7b77cf3033e805bb0f5296f51b4b",
+  "source_sha": "50ca6462176c68fd49c7af740f69e3354f89d9eb",
+  "meta_sha": "9d80ccd12e47129a3dbb0a0345c59a24f9fd5a21",
+  "model_id": "qwen2.5-coder-7b-instruct",
+  "scaffold": "single-shot-json",
+  "prompt_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "decoding": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "seed": 20261127
+  },
+  "attempt_budget": 8,
+  "seed": 20261127,
+  "certified_pass_band": {
+    "pass_rate": 0.42
+  },
+  "drift_triggers": {
+    "pass_rate_jump": 0.15
+  },
+  "tier": "dev"
+}

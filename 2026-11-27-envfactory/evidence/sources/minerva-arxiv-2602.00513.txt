@@ -1,0 +1,245 @@
+TITLE: [2602.00513] Minerva: Reinforcement Learning with Verifiable Rewards for Cyber Threat Intelligence LLMs
+SOURCE-URL: https://arxiv.org/abs/2602.00513
+META:
+  <meta name="description" content="Abstract page for arXiv paper 2602.00513: Minerva: Reinforcement Learning with Verifiable Rewards for Cyber Threat Intelligence LLMs">
+  <meta property="og:title" content="Minerva: Reinforcement Learning with Verifiable Rewards for Cyber Threat Intelligence LLMs" />
+  <meta property="og:description" content="Cyber threat intelligence (CTI) analysts routinely convert noisy, unstructured security artifacts into standardized, automation-ready representations. Although large language models (LLMs) show promise for this task, existing approaches remain brittle when producing structured CTI outputs and have largely relied on supervised fine-tuning (SFT). In contrast, CTI standards and community-maintained resources define canonical identifiers and schemas that enable deterministic verification of model outputs. We leverage this structure to study reinforcement learning with verifiable rewards (RLVR) for CTI tasks. We introduce Minerva, a unified dataset and training pipeline spanning multiple CTI subtasks, each paired with task-specific verifiers that score structured outputs and identifier predictions. To address reward sparsity during rollout, we propose MinervaRL, an auxiliary self-training mechanism that generates additional verified trajectories and distills them back into the model. Averaged across four backbones and 12 CTI benchmarks, MinervaRL improves the mean score by 15.8 percentage points over the corresponding base models and by 4.3 points over GRPO. The project page is available at https://maveryn.github.io/minerva-tmlr/."/>
+  <meta name="twitter:title" content="Minerva: Reinforcement Learning with Verifiable Rewards for Cyber..."/>
+  <meta name="twitter:description" content="Cyber threat intelligence (CTI) analysts routinely convert noisy, unstructured security artifacts into standardized, automation-ready representations. Although large language models (LLMs) show..."/>
+  <meta name="citation_title" content="Minerva: Reinforcement Learning with Verifiable Rewards for Cyber Threat Intelligence LLMs" />
+  <meta name="citation_author" content="Alam, Md Tanvirul" />
+  <meta name="citation_author" content="Piplai, Aritran" />
+  <meta name="citation_author" content="Cardei, Ionut" />
+  <meta name="citation_author" content="Rastogi, Nidhi" />
+  <meta name="citation_author" content="Worth Jr, Peter J" />
+  <meta name="citation_date" content="2026/01/31" />
+
+===== BODY =====
+
+[2602.00513] Minerva: Reinforcement Learning with Verifiable Rewards for Cyber Threat Intelligence LLMs 
+
+ Skip to main content 
+
+ Search 
+
+ Submit 
+ Donate 
+
+ Log in 
+
+ Search arXiv 
+
+ Press Enter to search · Advanced search 
+
+ Computer Science > Machine Learning
+
+ arXiv:2602.00513 (cs)
+
+ [Submitted on 31 Jan 2026 ( v1 ), last revised 6 Nov 2026 (this version, v4)]
+
+ Title: Minerva: Reinforcement Learning with Verifiable Rewards for Cyber Threat Intelligence LLMs
+
+ Authors: Md Tanvirul Alam , Aritran Piplai , Ionut Cardei , Nidhi Rastogi , Peter J Worth Jr 
+ View a PDF of the paper titled Minerva: Reinforcement Learning with Verifiable Rewards for Cyber Threat Intelligence LLMs, by Md Tanvirul Alam and 3 other authors
+
+ View PDF 
+ HTML (experimental) 
+
+ Abstract: Cyber threat intelligence (CTI) analysts routinely convert noisy, unstructured security artifacts into standardized, automation-ready representations. Although large language models (LLMs) show promise for this task, existing approaches remain brittle when producing structured CTI outputs and have largely relied on supervised fine-tuning (SFT). In contrast, CTI standards and community-maintained resources define canonical identifiers and schemas that enable deterministic verification of model outputs. We leverage this structure to study reinforcement learning with verifiable rewards (RLVR) for CTI tasks. We introduce Minerva, a unified dataset and training pipeline spanning multiple CTI subtasks, each paired with task-specific verifiers that score structured outputs and identifier predictions. To address reward sparsity during rollout, we propose MinervaRL, an auxiliary self-training mechanism that generates additional verified trajectories and distills them back into the model. Averaged across four backbones and 12 CTI benchmarks, MinervaRL improves the mean score by 15.8 percentage points over the corresponding base models and by 4.3 points over GRPO. The project page is available at this https URL .
+
+ Subjects: 
+
+ Machine Learning (cs.LG) 
+
+ Cite as: 
+ arXiv:2602.00513 [cs.LG] 
+
+ (or 
+ arXiv:2602.00513v4 [cs.LG] for this version)
+
+ https://doi.org/10.48550/arXiv.2602.00513 
+
+ Focus to learn more 
+
+ arXiv-issued DOI via DataCite
+
+ Submission history
+ From: Md Tanvirul Alam [ view email ] 
+ [v1] 
+ Sat, 31 Jan 2026 05:01:01 UTC (179 KB)
+
+ [v2] 
+ Wed, 11 Feb 2026 20:33:36 UTC (179 KB)
+
+ [v3] 
+ Thu, 7 May 2026 22:52:51 UTC (236 KB)
+
+ [v4] 
+ Fri, 6 Nov 2026 03:02:54 UTC (237 KB)
+
+ Full-text links: 
+ Access Paper:
+
+View a PDF of the paper titled Minerva: Reinforcement Learning with Verifiable Rewards for Cyber Threat Intelligence LLMs, by Md Tanvirul Alam and 3 other authors
+ View PDF 
+ HTML (experimental) 
+ TeX Source
+
+ view license 
+
+ Additional Features
+
+ Audio Summary 
+
+ Current browse context:
+
+ cs.LG
+
+ < prev 
+
+ | 
+ next > 
+
+ new 
+ | 
+ recent 
+ | 2026-02 
+
+ Change to browse by:
+
+ cs 
+
+ References & Citations
+
+ SciX 
+ Google Scholar 
+
+ Semantic Scholar 
+
+ export BibTeX citation 
+ Loading... 
+
+ BibTeX formatted citation
+
+ × 
+
+ loading... 
+
+ Data provided by: 
+
+ Bookmark
+
+ Bibliographic Tools 
+
+ Bibliographic and Citation Tools
+
+ Bibliographic Explorer Toggle 
+
+ Bibliographic Explorer ( What is the Explorer? ) 
+
+ Connected Papers Toggle 
+
+ Connected Papers ( What is Connected Papers? ) 
+
+ Litmaps Toggle 
+
+ Litmaps ( What is Litmaps? ) 
+
+ scite.ai Toggle 
+
+ scite Smart Citations ( What are Smart Citations? ) 
+
+ Code, Data, Media 
+
+ Code, Data and Media Associated with this Article
+
+ alphaXiv Toggle 
+
+ alphaXiv ( What is alphaXiv? ) 
+
+ Links to Code Toggle 
+
+ CatalyzeX Code Finder for Papers ( What is CatalyzeX? ) 
+
+ DagsHub Toggle 
+
+ DagsHub ( What is DagsHub? ) 
+
+ GotitPub Toggle 
+
+ Gotit.pub ( What is GotitPub? ) 
+
+ Huggingface Toggle 
+
+ Hugging Face ( What is Huggingface? ) 
+
+ ScienceCast Toggle 
+
+ ScienceCast ( What is ScienceCast? ) 
+
+ Demos 
+
+ Demos
+
+ Replicate Toggle 
+
+ Replicate ( What is Replicate? ) 
+
+ Spaces Toggle 
+
+ Hugging Face Spaces ( What is Spaces? ) 
+
+ Spaces Toggle 
+
+ TXYZ.AI ( What is TXYZ.AI? ) 
+
+ Related Papers 
+
+ Recommenders and Search Tools
+
+ Link to Influence Flower 
+
+ Influence Flower ( What are Influence Flowers? ) 
+
+ Core recommender toggle 
+
+ CORE Recommender ( What is CORE? ) 
+
+ IArxiv recommender toggle 
+
+ IArxiv Recommender 
+ ( What is IArxiv? ) 
+
+ Author 
+
+ Venue 
+
+ Institution 
+
+ Topic 
+
+ About arXivLabs
+
+ arXivLabs: experimental projects with community collaborators
+
+ arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+
+ Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+
+ Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs .
+
+ Which authors of this paper are endorsers? |
+ Disable MathJax ( What is MathJax? )
+
+ We gratefully acknowledge support from our major funders ,
+ member institutions , ,
+ and all contributors.
+
+ About · 
+ Help · 
+ Contact · 
+ Subscribe · 
+ Copyright · 
+ Privacy · 
+ Accessibility · 
+ Operational Status (opens in new tab)

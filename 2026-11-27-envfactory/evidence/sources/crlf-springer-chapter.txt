@@ -1,0 +1,11 @@
+TITLE: Client Challenge
+SOURCE-URL: https://link.springer.com/chapter/10.1007/978-3-032-16089-8_27
+META:
+
+===== BODY =====
+
+Client Challenge 
+
+ A required part of this site couldn’t load. This may be due to a browser
+ extension, network issues, or browser settings. Please check your
+ connection, disable any ad blockers, or try using a different browser.

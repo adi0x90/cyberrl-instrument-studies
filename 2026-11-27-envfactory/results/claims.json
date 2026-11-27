@@ -1,0 +1,174 @@
+{
+  "claims": [
+    {
+      "id": "a1.rows",
+      "path": "a1.rows",
+      "value": 5700
+    },
+    {
+      "id": "a1.seeds",
+      "path": "a1.seeds",
+      "value": 20
+    },
+    {
+      "id": "a1.weak.kill_rate",
+      "path": "a1.arms.weak.kill_rate",
+      "value": 0.671958
+    },
+    {
+      "id": "a1.static.kill_rate",
+      "path": "a1.arms.static.kill_rate",
+      "value": 0.962963
+    },
+    {
+      "id": "a1.property.kill_rate",
+      "path": "a1.arms.property.kill_rate",
+      "value": 1.0
+    },
+    {
+      "id": "a1.property.endpoint.canonical_lookup.rate",
+      "path": "a1.property.endpoint.canonical_lookup.rate",
+      "value": 1.0
+    },
+    {
+      "id": "a1.property.endpoint.lookup_mutants.rate",
+      "path": "a1.property.endpoint.lookup_mutants.rate",
+      "value": 1.0
+    },
+    {
+      "id": "a1.property.endpoint.e2_bad_corpus.rate",
+      "path": "a1.property.endpoint.e2_bad_corpus.rate",
+      "value": 1.0
+    },
+    {
+      "id": "a1.property.endpoint.e2_positive_controls.rate",
+      "path": "a1.property.endpoint.e2_positive_controls.rate",
+      "value": 0.0
+    },
+    {
+      "id": "a1.property_only_kills.count",
+      "path": "a1.property_only_kills",
+      "value": 7
+    },
+    {
+      "id": "a1.property.survivors.count",
+      "path": "a1.property.survivors",
+      "value": 0
+    },
+    {
+      "id": "a1.native.cheap.bad_kills",
+      "path": "a1.native.cheap.bad_kills",
+      "value": 3
+    },
+    {
+      "id": "a1.native.property.bad_kills",
+      "path": "a1.native.property.bad_kills",
+      "value": 4
+    },
+    {
+      "id": "a1.native.property.valid_false_reject",
+      "path": "a1.native.property.valid_false_reject",
+      "value": 0
+    },
+    {
+      "id": "a1.loo.alternate[0].violated",
+      "path": "a1.loo.alternate[0].violated",
+      "value": 1
+    },
+    {
+      "id": "a1.loo.alternate[1].violated",
+      "path": "a1.loo.alternate[1].violated",
+      "value": 0
+    },
+    {
+      "id": "a1.loo.alternate[2].violated",
+      "path": "a1.loo.alternate[2].violated",
+      "value": 0
+    },
+    {
+      "id": "a1.latency.delta_p50_mean",
+      "path": "a1.latency.aggregate.delta_p50_ms_mean_across_tasks",
+      "value": 2.4821
+    },
+    {
+      "id": "a2.clean_packs",
+      "path": "a2.clean_packs",
+      "value": 5
+    },
+    {
+      "id": "a2.clean_packs_passing",
+      "path": "a2.clean_packs_passing",
+      "value": 5
+    },
+    {
+      "id": "a2.d1",
+      "path": "a2.d1",
+      "value": true
+    },
+    {
+      "id": "a2.d2",
+      "path": "a2.d2",
+      "value": true
+    },
+    {
+      "id": "a2.d3",
+      "path": "a2.d3",
+      "value": true
+    },
+    {
+      "id": "a3.redis-setrange-grow-undercount.s1_cold_run.p50",
+      "path": "a3.targets.redis-setrange-grow-undercount.s1_cold_run.p50",
+      "value": 0.2237
+    },
+    {
+      "id": "a3.redis-setrange-grow-undercount.s2_warm_layers.p50",
+      "path": "a3.targets.redis-setrange-grow-undercount.s2_warm_layers.p50",
+      "value": 0.295
+    },
+    {
+      "id": "a3.redis-setrange-grow-undercount.s3_overlay_teardown.p50",
+      "path": "a3.targets.redis-setrange-grow-undercount.s3_overlay_teardown.p50",
+      "value": 0.3501
+    },
+    {
+      "id": "a3.etcd-revocation-skew.s1_cold_run.p50",
+      "path": "a3.targets.etcd-revocation-skew.s1_cold_run.p50",
+      "value": 0.6812
+    },
+    {
+      "id": "a3.etcd-revocation-skew.s2_warm_layers.p50",
+      "path": "a3.targets.etcd-revocation-skew.s2_warm_layers.p50",
+      "value": 0.9514
+    },
+    {
+      "id": "a3.etcd-revocation-skew.s3_overlay_teardown.p50",
+      "path": "a3.targets.etcd-revocation-skew.s3_overlay_teardown.p50",
+      "value": 0.8795
+    },
+    {
+      "id": "a3.gate.redis-setrange-grow-undercount",
+      "path": "a3.gate.redis-setrange-grow-undercount",
+      "value": true
+    },
+    {
+      "id": "a3.gate.etcd-revocation-skew",
+      "path": "a3.gate.etcd-revocation-skew",
+      "value": true
+    },
+    {
+      "id": "a3.not_run.count",
+      "path": "a3.not_run",
+      "value": 3
+    },
+    {
+      "id": "a3.qemu.supported",
+      "path": "a3.qemu.supported",
+      "value": false
+    },
+    {
+      "id": "a3.criu.supported",
+      "path": "a3.criu.supported",
+      "value": true
+    }
+  ]
+}

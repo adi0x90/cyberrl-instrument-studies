@@ -1,0 +1,18 @@
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -202,6 +202,10 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         assertion = self.request.form.get("assertion")
+         if not assertion:
+             raise InvalidRequestError("Missing 'assertion' in request")
+ 
+         claims = self.process_assertion_claims(assertion)
++        # Any downstream decisions (scope policy, subject, issuer lookup) must
++        # use the same canonical, duplicate-free projection of the assertion
++        # payload that claim validation accepted, so that duplicated JSON
++        # member names cannot yield different values between validation and
++        # token issuance.
++        claims = self.canonical_claims
+         client = self.resolve_issuer_client(claims["iss"])
+         log.debug("Validate token request of %s", client)
+ 
+         if not client.check_grant_type(self.GRANT_TYPE):

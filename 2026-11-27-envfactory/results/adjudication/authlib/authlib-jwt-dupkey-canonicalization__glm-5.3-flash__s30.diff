@@ -1,0 +1,29 @@
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -190,12 +190,12 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         assertion = self.request.form.get("assertion")
+         if not assertion:
+             raise InvalidRequestError("Missing 'assertion' in request")
+ 
+         claims = self.process_assertion_claims(assertion)
+-        client = self.resolve_issuer_client(claims["iss"])
++        client = self.resolve_issuer_client(self.canonical_claims["iss"])
+         log.debug("Validate token request of %s", client)
+ 
+         if not client.check_grant_type(self.GRANT_TYPE):
+             raise UnauthorizedClientError(
+                 f"The client is not authorized to use 'grant_type={self.GRANT_TYPE}'"
+@@ -209,13 +209,13 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         # when the assertion carries a "scope" claim, it has been validated
+         # against the client's registered scopes and now defines the scope
+         # policy of this grant
+-        if self.canonical_claims.get("scope") is not None:
+-            self.requested_scope = claims.get("scope")
++        scope = self.canonical_claims.get("scope")
++        if scope is not None:
++            self.requested_scope = scope
+ 
+-        subject = claims.get("sub")
++        subject = self.canonical_claims.get("sub")
+         if subject:
+             user = self.authenticate_user(subject)

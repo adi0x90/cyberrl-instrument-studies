@@ -1,0 +1,15 @@
+diff --git a/authlib/oauth2/rfc7523/jwt_bearer.py b/authlib/oauth2/rfc7523/jwt_bearer.py
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -160,8 +160,8 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         # claims are validated against their canonical, duplicate-free
+         # projection, so validation sees a deterministic form of the
+         # assertion regardless of duplicate JSON member names
+         canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
+         self.verify_claims(canonical)
+         self._verify_asserted_scope(canonical, client)
+         self.canonical_claims = canonical
+-        return token.claims
++        return canonical
+ 
+     def extract_assertion(self, assertion: str):

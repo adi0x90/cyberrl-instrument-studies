@@ -1,0 +1,359 @@
+{
+  "n_per_task": 10000,
+  "tasks": [
+    {
+      "task_id": "authz_delegated_scope_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 181,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 2.1827,
+        "p50": 0.7113,
+        "p95": 9.545,
+        "p99": 28.6222
+      },
+      "property_ms": {
+        "mean": 20.0996,
+        "p50": 7.4798,
+        "p95": 69.9195,
+        "p99": 123.0425
+      },
+      "delta_ms": {
+        "mean": 17.9169,
+        "p50": 6.275,
+        "p95": 65.9037,
+        "p99": 119.4751
+      },
+      "oracle_build_ms": 42.545,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "authz_delegated_write_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 152,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 2.4167,
+        "p50": 0.7115,
+        "p95": 11.3162,
+        "p99": 27.4621
+      },
+      "property_ms": {
+        "mean": 18.9594,
+        "p50": 7.6104,
+        "p95": 64.381,
+        "p99": 117.604
+      },
+      "delta_ms": {
+        "mean": 16.5427,
+        "p50": 5.8009,
+        "p95": 60.3294,
+        "p99": 111.8446
+      },
+      "oracle_build_ms": 25.896,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "bounds_content_length_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 17,
+      "property_cases": 162,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 2.4869,
+        "p50": 0.5823,
+        "p95": 12.1053,
+        "p99": 29.8632
+      },
+      "property_ms": {
+        "mean": 16.0483,
+        "p50": 6.8368,
+        "p95": 54.9217,
+        "p99": 96.1424
+      },
+      "delta_ms": {
+        "mean": 13.5614,
+        "p50": 4.6761,
+        "p95": 51.3608,
+        "p99": 90.4495
+      },
+      "oracle_build_ms": 9.279,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "bounds_header_budget_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 15,
+      "property_cases": 184,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 1.8636,
+        "p50": 0.8003,
+        "p95": 6.8086,
+        "p99": 23.3607
+      },
+      "property_ms": {
+        "mean": 26.555,
+        "p50": 12.1465,
+        "p95": 94.325,
+        "p99": 161.5408
+      },
+      "delta_ms": {
+        "mean": 24.6914,
+        "p50": 11.2594,
+        "p95": 89.111,
+        "p99": 153.1783
+      },
+      "oracle_build_ms": 163.837,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "canonicalization_identity_fold_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 13,
+      "property_cases": 114,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 1.9838,
+        "p50": 0.4457,
+        "p95": 9.9024,
+        "p99": 26.0772
+      },
+      "property_ms": {
+        "mean": 12.4324,
+        "p50": 4.4092,
+        "p95": 45.9958,
+        "p99": 85.8488
+      },
+      "delta_ms": {
+        "mean": 10.4486,
+        "p50": 2.8795,
+        "p95": 43.5322,
+        "p99": 78.2622
+      },
+      "oracle_build_ms": 22.699,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "canonicalization_signed_path_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 156,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 2.4163,
+        "p50": 0.5827,
+        "p95": 11.6785,
+        "p99": 28.6881
+      },
+      "property_ms": {
+        "mean": 15.3033,
+        "p50": 6.2462,
+        "p95": 52.891,
+        "p99": 94.7138
+      },
+      "delta_ms": {
+        "mean": 12.887,
+        "p50": 4.2085,
+        "p95": 49.8047,
+        "p99": 91.5689
+      },
+      "oracle_build_ms": 20.787,
+      "oracle_ambiguous_fraction": 0.423077,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "containment_cidr_block_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 16,
+      "property_cases": 200,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 2.7089,
+        "p50": 0.9232,
+        "p95": 11.9495,
+        "p99": 32.3284
+      },
+      "property_ms": {
+        "mean": 20.8911,
+        "p50": 7.8878,
+        "p95": 73.5667,
+        "p99": 127.9399
+      },
+      "delta_ms": {
+        "mean": 18.1822,
+        "p50": 6.7797,
+        "p95": 68.5853,
+        "p99": 120.7073
+      },
+      "oracle_build_ms": 25.204,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "containment_path_prefix_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 145,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 2.521,
+        "p50": 0.624,
+        "p95": 11.962,
+        "p99": 29.3593
+      },
+      "property_ms": {
+        "mean": 16.8204,
+        "p50": 7.2542,
+        "p95": 56.4022,
+        "p99": 100.4298
+      },
+      "delta_ms": {
+        "mean": 14.2994,
+        "p50": 5.1723,
+        "p95": 53.1731,
+        "p99": 96.4347
+      },
+      "oracle_build_ms": 13.869,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "cookie_host_prefix_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 149,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 2.3615,
+        "p50": 0.6492,
+        "p95": 10.6916,
+        "p99": 25.7083
+      },
+      "property_ms": {
+        "mean": 17.6232,
+        "p50": 7.8942,
+        "p95": 59.9858,
+        "p99": 104.0483
+      },
+      "delta_ms": {
+        "mean": 15.2617,
+        "p50": 5.7338,
+        "p95": 55.9807,
+        "p99": 100.2861
+      },
+      "oracle_build_ms": 52.743,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "cookie_hostonly_forward_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 93,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 2.8631,
+        "p50": 0.753,
+        "p95": 14.2379,
+        "p99": 29.9733
+      },
+      "property_ms": {
+        "mean": 15.8598,
+        "p50": 6.549,
+        "p95": 55.5305,
+        "p99": 94.9001
+      },
+      "delta_ms": {
+        "mean": 12.9967,
+        "p50": 4.0915,
+        "p95": 51.2737,
+        "p99": 91.7483
+      },
+      "oracle_build_ms": 12.543,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "state_drift_quorum_generation_02",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 14,
+      "property_cases": 181,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 2.3256,
+        "p50": 0.6709,
+        "p95": 10.2701,
+        "p99": 29.1135
+      },
+      "property_ms": {
+        "mean": 19.1291,
+        "p50": 7.4561,
+        "p95": 66.46,
+        "p99": 118.0741
+      },
+      "delta_ms": {
+        "mean": 16.8035,
+        "p50": 5.9327,
+        "p95": 61.9979,
+        "p99": 109.7066
+      },
+      "oracle_build_ms": 183.869,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    },
+    {
+      "task_id": "state_drift_revocation_epoch_01",
+      "seed": 20261127,
+      "n": 10000,
+      "fixed_cases": 13,
+      "property_cases": 149,
+      "metamorphic_calls": 16,
+      "static_ms": {
+        "mean": 2.3557,
+        "p50": 0.6527,
+        "p95": 11.3491,
+        "p99": 27.3847
+      },
+      "property_ms": {
+        "mean": 18.2924,
+        "p50": 7.5304,
+        "p95": 61.9967,
+        "p99": 110.4457
+      },
+      "delta_ms": {
+        "mean": 15.9366,
+        "p50": 5.7917,
+        "p95": 58.8998,
+        "p99": 103.3418
+      },
+      "oracle_build_ms": 132.599,
+      "oracle_ambiguous_fraction": 0.0,
+      "static_labels_nonempty": true
+    }
+  ],
+  "aggregate": {
+    "delta_p50_ms_mean_across_tasks": 5.7168,
+    "delta_p50_ms_max": 11.2594,
+    "wall_seconds": null,
+    "note": "per-candidate delta; already includes the full generated case set per call"
+  }
+}

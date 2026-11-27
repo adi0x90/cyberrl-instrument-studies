@@ -1,0 +1,398 @@
+TITLE: GitHub - harbor-framework/harbor: Framework for evaluating and improving agents · GitHub
+SOURCE-URL: https://github.com/harbor-framework/harbor
+META:
+  <meta name="description" content="Framework for evaluating and improving agents . Contribute to harbor-framework/harbor development by creating an account on GitHub.">
+  <meta name="twitter:title" content="GitHub - harbor-framework/harbor: Framework for evaluating and improving agents" />
+  <meta name="twitter:description" content="Framework for evaluating and improving agents . Contribute to harbor-framework/harbor development by creating an account on GitHub." />
+  <meta property="og:title" content="GitHub - harbor-framework/harbor: Framework for evaluating and improving agents" />
+  <meta property="og:description" content="Framework for evaluating and improving agents . Contribute to harbor-framework/harbor development by creating an account on GitHub." />
+
+===== BODY =====
+
+GitHub - harbor-framework/harbor: Framework for evaluating and improving agents · GitHub 
+
+ Skip to content 
+
+ Navigation Menu
+
+ Sign in 
+
+ Products Platform GitHub Repository hosting, code review, and collaboration 
+ Copilot AI coding agent for tasks, projects, and automated work 
+
+ Build & Ship Actions CI/CD and automation 
+ Code Quality Quality analysis, fixes, and enforcement 
+ Codespaces Cloud development environments 
+
+ Secure Code Security Vulnerability detection and remediation 
+ Secret Protection Secret scanning and leak prevention 
+
+ All Features 
+
+ Developers Learn Documentation 
+ Training 
+ Certifications 
+
+ Build Build with Copilot 
+ Customize Copilot 
+ Integrations 
+
+ Explore Trending repos 
+ GitHub Sponsors 
+ Developer articles 
+
+ Changelog Changelog Your source for the latest features, improvements, and fixes across GitHub products, all in one place. 
+
+ Businesses By Stage Enterprises 
+ Team 
+ Startups 
+ Nonprofits 
+
+ By Industry Healthcare 
+ Financial services 
+ Manufacturing 
+ Government 
+ See all industries 
+
+ Evaluate GitHub Why GitHub 
+ Customer Stories 
+ Business insights 
+ Trust Center 
+
+ Add-ons GitHub Advanced Security Enterprise-grade code security 
+ Copilot for business Enterprise-grade AI features 
+ Premium Support Enterprise-grade 24/7 support 
+
+ Resources Learn & Connect Documentation 
+ Resource center 
+ Blog 
+ Events & webinars 
+ Community Forum 
+ Customer Stories 
+ Integrations 
+
+ Support Customer support 
+ Training 
+ GitHub Status 
+
+ Company About 
+ Partners 
+ Changelog 
+
+ GitHub Universe GitHub Universe The event for developers, by developers — talks, workshops, and what’s next for GitHub. 
+
+ Pricing 
+ Search / 
+
+ Sign in 
+ Sign up Appearance settings
+
+ You signed in with another tab or window. Reload to refresh your session. 
+ You signed out in another tab or window. Reload to refresh your session. 
+ You switched accounts on another tab or window. Reload to refresh your session. 
+
+ Dismiss alert 
+
+ {{ message }}
+
+ harbor-framework 
+ harbor 
+
+ Repository navigation
+
+ Code 
+ Issues 422 ( 422 ) 
+ Pull requests 551 ( 551 ) 
+ Actions 
+ Projects 
+ Security and quality 
+ Insights 
+
+ More items 
+
+ harbor 
+ Public 
+
+ Notifications You must be signed in to change notification settings 
+ Fork 2.3k ( 2.3k ) 
+ Star 7.5k ( 7.5k ) You must be signed in to star a repository 
+
+ About 
+ Framework for evaluating and improving agents 
+ harborframework.com/ 
+ Topics 
+ evals rl-environments terminal-bench 
+ Resources 
+ Readme 
+ Apache-2.0 license 
+ Contributing 
+ Contributing 
+ Cite this repository 
+ Activity 
+ Custom properties 
+
+ Stars 
+ 7.5k stars 
+ Watchers 
+ 28 watching 
+ Forks 
+ 2.3k forks 
+
+ Report repository 
+
+ main 
+
+ Branches Tags 
+
+ Go to file 
+
+ Code Open more actions menu 
+
+ Latest commit
+
+ History
+ 2,094 Commits 
+ 2,094 Commits 
+
+ Folders and files
+ Name Name Last commit message 
+ Last commit date 
+
+ .github 
+
+ .github 
+
+ .vscode 
+
+ .vscode 
+
+ adapters 
+
+ adapters 
+
+ apps/ viewer 
+
+ apps/ viewer 
+
+ docs-mintlify 
+
+ docs-mintlify 
+
+ docs 
+
+ docs 
+
+ examples 
+
+ examples 
+
+ packages 
+
+ packages 
+
+ rfcs 
+
+ rfcs 
+
+ scripts 
+
+ scripts 
+
+ skills 
+
+ skills 
+
+ src/ harbor 
+
+ src/ harbor 
+
+ tests 
+
+ tests 
+
+ .gitignore 
+
+ .gitignore 
+
+ .python-version 
+
+ .python-version 
+
+ AGENTS.md 
+
+ AGENTS.md 
+
+ CHANGELOG.md 
+
+ CHANGELOG.md 
+
+ CITATION.cff 
+
+ CITATION.cff 
+
+ CLAUDE.md 
+
+ CLAUDE.md 
+
+ CONTRIBUTING.md 
+
+ CONTRIBUTING.md 
+
+ LICENSE 
+
+ LICENSE 
+
+ README.md 
+
+ README.md 
+
+ pyproject.toml 
+
+ pyproject.toml 
+
+ registry.json 
+
+ registry.json 
+
+ skills-lock.json 
+
+ skills-lock.json 
+
+ uv.lock 
+
+ uv.lock 
+
+ View all files 
+
+ Repository files navigation
+
+ README 
+ Contributing 
+ Apache-2.0 license 
+
+ More items 
+
+ Harbor
+
+ Harbor is a framework from the creators of Terminal-Bench for evaluating and optimizing agents and language models. You can use Harbor to:
+
+ Evaluate arbitrary agents like Claude Code, OpenHands, Codex CLI, and more.
+
+ Build and share your own benchmarks and environments.
+
+ Conduct experiments in thousands of environments in parallel through providers like Daytona, Modal, LangSmith, Blaxel, Novita Sandbox, Tensorlake, Runta, and Sail.
+
+ Generate rollouts for RL optimization.
+
+ Check out the Harbor Cookbook for end-to-end examples and guides.
+
+ Installation
+
+ uv tool install harbor 
+
+ or
+
+ pip install harbor 
+
+ Example: Running Terminal-Bench-2.0
+
+ Harbor is the official harness for Terminal-Bench-2.0 :
+
+ export ANTHROPIC_API_KEY= < YOUR-KEY > 
+harbor run --dataset terminal-bench@2.0 \
+ --agent claude-code \
+ --model anthropic/claude-opus-5-5 \
+ --n-concurrent 4 
+
+ This will launch the benchmark locally using Docker. To run it on a cloud provider (like Daytona) pass the --env flag as below:
+
+ export ANTHROPIC_API_KEY= < YOUR-KEY > 
+ export DAYTONA_API_KEY= < YOUR-KEY > 
+harbor run --dataset terminal-bench@2.0 \
+ --agent claude-code \
+ --model anthropic/claude-opus-5-5 \
+ --n-concurrent 100 \
+ --env daytona 
+
+ To see all supported agents, and other options run:
+
+ harbor run --help 
+
+ To explore all supported third party benchmarks (like SWE-Bench and Aider Polyglot) run:
+
+ harbor datasets list 
+
+ To evaluate an agent and model one of these datasets, you can use the following command:
+
+ harbor run -d " <dataset@version> " -m " <model> " -a " <agent> " 
+
+ Citation
+
+ If you use Harbor in academic work, please cite it using the “Cite this repository” button on GitHub or the following BibTeX entry:
+
+ @software { Harbor_Framework ,
+ author = { {Harbor Framework Team} } ,
+ title = { {Harbor: A framework for evaluating and optimizing agents and models in container environments} } ,
+ year = { 2026 } ,
+ doi = { 10.5281/zenodo.20953922 } ,
+ url = { https://doi.org/10.5281/zenodo.20953922 } 
+} 
+
+ The DOI above is the concept DOI , which always resolves to the latest release and aggregates citations across all versions. To cite a specific version instead, use that version's DOI from the Zenodo record .
+
+ About 
+ Framework for evaluating and improving agents 
+ harborframework.com/ 
+ Topics 
+ evals rl-environments terminal-bench 
+ Resources 
+ Readme 
+ Apache-2.0 license 
+ Contributing 
+ Contributing 
+ Cite this repository 
+ Activity 
+ Custom properties 
+
+ Stars 
+ 7.5k stars 
+ Watchers 
+ 28 watching 
+ Forks 
+ 2.3k forks 
+
+ Report repository 
+
+ Releases 
+
+ Packages 
+
+ Contributors 
+
+ Languages 
+
+ Footer
+
+ © 2026 GitHub, Inc.
+
+ Footer navigation
+
+ Terms 
+
+ Privacy 
+
+ Security 
+
+ Status 
+
+ Community 
+
+ Docs 
+
+ Contact 
+
+ Manage cookies
+
+ Do not share my personal information
+
+ You can’t perform that action at this time.

@@ -1,0 +1,223 @@
+{
+  "pack": "authlib-jwt-dupkey-canonicalization",
+  "seed": 20261127,
+  "variants": [
+    {
+      "variant": "vulnerable",
+      "truth": "bad",
+      "cheap": {
+        "scenarios": {
+          "main": {
+            "exit": 1,
+            "passed": false
+          },
+          "aud": {
+            "exit": 1,
+            "passed": false
+          },
+          "exp": {
+            "exit": 1,
+            "passed": false
+          }
+        },
+        "passed": false
+      },
+      "property": {
+        "decided": 24,
+        "violations": 24,
+        "passed": false,
+        "examples": [
+          {
+            "kind": "scope",
+            "issued": "openid email profile admin",
+            "policy": "openid email"
+          },
+          {
+            "kind": "exp",
+            "status": 200
+          },
+          {
+            "kind": "aud",
+            "status": 200
+          }
+        ]
+      },
+      "cheap_verdict": "VIOLATED",
+      "property_verdict": "VIOLATED"
+    },
+    {
+      "variant": "heldout_strict",
+      "truth": "valid",
+      "cheap": {
+        "scenarios": {
+          "main": {
+            "exit": 0,
+            "passed": true
+          },
+          "aud": {
+            "exit": 0,
+            "passed": true
+          },
+          "exp": {
+            "exit": 0,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "property": {
+        "decided": 19,
+        "violations": 0,
+        "passed": true,
+        "examples": []
+      },
+      "cheap_verdict": "HOLDS",
+      "property_verdict": "HOLDS"
+    },
+    {
+      "variant": "partial_scope_only",
+      "truth": "bad",
+      "cheap": {
+        "scenarios": {
+          "main": {
+            "exit": 0,
+            "passed": true
+          },
+          "aud": {
+            "exit": 1,
+            "passed": false
+          },
+          "exp": {
+            "exit": 1,
+            "passed": false
+          }
+        },
+        "passed": false
+      },
+      "property": {
+        "decided": 19,
+        "violations": 19,
+        "passed": false,
+        "examples": [
+          {
+            "kind": "exp",
+            "status": 200
+          },
+          {
+            "kind": "aud",
+            "status": 200
+          },
+          {
+            "kind": "aud",
+            "status": 200
+          }
+        ]
+      },
+      "cheap_verdict": "VIOLATED",
+      "property_verdict": "VIOLATED"
+    },
+    {
+      "variant": "partial_sub_raw",
+      "truth": "bad",
+      "cheap": {
+        "scenarios": {
+          "main": {
+            "exit": 0,
+            "passed": true
+          },
+          "aud": {
+            "exit": 0,
+            "passed": true
+          },
+          "exp": {
+            "exit": 0,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "property": {
+        "decided": 19,
+        "violations": 4,
+        "passed": false,
+        "examples": [
+          {
+            "kind": "sub",
+            "claims": {
+              "sub": "admin",
+              "user_id": null
+            }
+          },
+          {
+            "kind": "sub",
+            "claims": {
+              "sub": "admin",
+              "user_id": null
+            }
+          },
+          {
+            "kind": "sub",
+            "claims": {
+              "sub": "admin",
+              "user_id": null
+            }
+          }
+        ]
+      },
+      "cheap_verdict": "HOLDS",
+      "property_verdict": "VIOLATED"
+    },
+    {
+      "variant": "shortcut_admin",
+      "truth": "bad",
+      "cheap": {
+        "scenarios": {
+          "main": {
+            "exit": 0,
+            "passed": true
+          },
+          "aud": {
+            "exit": 1,
+            "passed": false
+          },
+          "exp": {
+            "exit": 1,
+            "passed": false
+          }
+        },
+        "passed": false
+      },
+      "property": {
+        "decided": 19,
+        "violations": 19,
+        "passed": false,
+        "examples": [
+          {
+            "kind": "exp",
+            "status": 200
+          },
+          {
+            "kind": "aud",
+            "status": 200
+          },
+          {
+            "kind": "aud",
+            "status": 200
+          }
+        ]
+      },
+      "cheap_verdict": "VIOLATED",
+      "property_verdict": "VIOLATED"
+    }
+  ],
+  "cheap": {
+    "valid_false_reject": 0,
+    "bad_kills": 3,
+    "bad_total": 4
+  },
+  "property": {
+    "valid_false_reject": 0,
+    "bad_kills": 4,
+    "bad_total": 4
+  }
+}

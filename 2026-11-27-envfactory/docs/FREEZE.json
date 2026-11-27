@@ -1,0 +1,8 @@
+{
+  "frozen_at": "2026-11-27T09:10:00Z",
+  "spec_path": "docs/SPEC.md",
+  "spec_sha256": "b01ff5faecab046c3643ec484a7137ff956c8991006f4cbed36fb45046eab440",
+  "spec_source": "/Users/adi/Desktop/attify-strategy-ops/aditya-gupta-positioning/jobs/anthropic-rl-scientist-engineer-cyber/part3-cyber-rl-environment-factory/02-ARCHITECTURE-AND-POC-SPEC.md",
+  "revision": "v2",
+  "rule": "immutable after the first real run; amend only with a dated addendum, never in place"
+}

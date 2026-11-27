@@ -1,0 +1,131 @@
+{
+  "id": "state_drift_revocation_epoch_01",
+  "family": "state_drift",
+  "polarity_sensitive": true,
+  "source": "\"\"\"Revocation epoch check for cached sessions.\"\"\"\n\n\nclass Session:\n    def __init__(self, subject, epoch):\n        self.subject = subject\n        self.epoch = epoch\n\n\nclass RevocationState:\n    def __init__(self, subject, epoch, settled):\n        self.subject = subject\n        self.epoch = epoch\n        self.settled = settled\n\n\ndef may_use(session, state):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def may_use",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "A cached session may be used only when the current revocation epoch is not newer than the session's recorded epoch, the revocation state has settled, and both records name the same subject.",
+  "security_cases": [
+    {
+      "id": "s1_stale_epoch",
+      "call": "may_use(Session(\"u1\", 41), RevocationState(\"u1\", 42, True))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_revocation_in_flight",
+      "call": "may_use(Session(\"u1\", 42), RevocationState(\"u1\", 42, False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_lagging_session",
+      "call": "may_use(Session(\"u1\", 0), RevocationState(\"u1\", 7, True))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_one_behind",
+      "call": "may_use(Session(\"u1\", 0), RevocationState(\"u1\", 1, True))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_unsettled_and_stale",
+      "call": "may_use(Session(\"u1\", 99), RevocationState(\"u1\", 100, False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_equal_epoch_unsettled",
+      "call": "may_use(Session(\"u1\", 5), RevocationState(\"u1\", 5, False))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s7_other_subject",
+      "call": "may_use(Session(\"u2\", 9), RevocationState(\"u1\", 9, True))",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_equal_epoch_settled",
+      "call": "may_use(Session(\"u1\", 42), RevocationState(\"u1\", 42, True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_newer_session",
+      "call": "may_use(Session(\"u1\", 43), RevocationState(\"u1\", 42, True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_zero_epoch",
+      "call": "may_use(Session(\"u1\", 0), RevocationState(\"u1\", 0, True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_fresh_login_ahead",
+      "call": "may_use(Session(\"u1\", 1), RevocationState(\"u1\", 0, True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_large_gap",
+      "call": "may_use(Session(\"u7\", 1001), RevocationState(\"u7\", 1000, True))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_equal_nonzero_epoch",
+      "call": "may_use(Session(\"u1\", 5), RevocationState(\"u1\", 5, True))",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "state.epoch <= session.epoch and state.settled and session.subject == state.subject",
+  "alternate_fixes": [
+    "session.epoch >= state.epoch and state.settled and session.subject == state.subject",
+    "state.settled and not (session.epoch < state.epoch) and state.subject == session.subject",
+    "bool(state.settled) and (state.epoch <= session.epoch) and (session.subject == state.subject)"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "state.epoch < session.epoch and state.settled and session.subject == state.subject",
+      "why": "Requires a strictly newer epoch, so the stale-session PoC is refused while the ordinary equal-epoch case after a login is refused too."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "state.settled and session.subject == state.subject",
+      "why": "Ignores the epoch comparison, so a session issued before the revocation bump is still honoured once the state settles."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Denies every session, so no legitimate login can proceed."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and (state.epoch <= session.epoch and session.subject == state.subject)",
+      "why": "Wraps the epoch and subject checks in 'True and (...)', dropping the settled-state obligation."
+    }
+  ],
+  "polarity": {
+    "fact": "A cached session remains usable only while the current revocation epoch is less than or equal to the session's recorded epoch; an epoch strictly greater than the session's must be refused.",
+    "correct_marker": [
+      "<="
+    ],
+    "converse_marker": [
+      ">"
+    ]
+  }
+}

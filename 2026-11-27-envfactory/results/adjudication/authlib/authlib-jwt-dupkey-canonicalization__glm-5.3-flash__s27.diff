@@ -1,0 +1,56 @@
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -154,22 +154,21 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         :raise: InvalidGrantError
+         """
+-        headers, claims = self.extract_assertion(assertion)
+-        # "iss" is read before the signature and the claims are verified, so it
+-        # cannot be assumed to be present nor to be a string.
+-        if "iss" not in claims:
++        headers, _ = self.extract_assertion(assertion)
++        # All policy decisions are made against the canonical, duplicate-free
++        # projection of the assertion payload, so resolution and validation see
++        # a deterministic form of the assertion regardless of duplicate JSON
++        # member names.
++        canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
++        # "iss" is read before the signature and the claims are verified, so it
++        # cannot be assumed to be present nor to be a string.
++        if "iss" not in canonical:
+             raise InvalidGrantError(description="Missing claim: 'iss'")
+ 
+-        issuer = claims["iss"]
++        issuer = canonical["iss"]
+         if not isinstance(issuer, str):
+             raise InvalidGrantError(description="Invalid claim: 'iss'")
+@@ -187,12 +186,9 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+             log.debug("Assertion Error: %r", e)
+             raise InvalidGrantError("Invalid JWT assertion") from None
+ 
+-        # claims are validated against their canonical, duplicate-free
+-        # projection, so validation sees a deterministic form of the
+-        # assertion regardless of duplicate JSON member names
+-        canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
+         self.verify_claims(canonical)
+         self._verify_asserted_scope(canonical, client)
+         self.canonical_claims = canonical
+@@ -239,19 +235,19 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         assertion = self.request.form.get("assertion")
+         if not assertion:
+             raise InvalidRequestError("Missing 'assertion' in request")
+ 
+         claims = self.process_assertion_claims(assertion)
+-        client = self.resolve_issuer_client(claims["iss"])
++        client = self.resolve_issuer_client(self.canonical_claims["iss"])
+         log.debug("Validate token request of %s", client)
+@@ -263,13 +259,13 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         # when the assertion carries a "scope" claim, it has been validated
+         # against the client's registered scopes and now defines the scope
+         # policy of this grant
+         if self.canonical_claims.get("scope") is not None:
+-            self.requested_scope = claims.get("scope")
++            self.requested_scope = self.canonical_claims.get("scope")
+ 
+-        subject = claims.get("sub")
++        subject = self.canonical_claims.get("sub")
+         if subject:
+             user = self.authenticate_user(subject)

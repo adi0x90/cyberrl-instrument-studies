@@ -1,0 +1,36 @@
+{
+  "stamp_version": "1.0",
+  "level": "policy_tested",
+  "pack": "etcd-revocation-skew",
+  "issued_at": "2026-11-27T09:24:30Z",
+  "expires": "2026-12-27T09:24:30Z",
+  "provenance_sha256": "013e3313fb7a7db2fd73beb0c2ff87becb3631c022eea7b1727de488101b3bb1",
+  "audit_sha256": "499ea8a970272752d32aad370f7152a9c8a9b9b0b999ea33e171e6df89366323",
+  "spec_sha256": "b01ff5faecab046c3643ec484a7137ff956c8991006f4cbed36fb45046eab440",
+  "integrity_checks_sha256": "f86db397d8c0a0fd98a93a9799de31f904294f915626b6c66b9420f1b2c6f7ee",
+  "policy_checks_sha256": "83137825b4f3c74bd4e4730e6d7e66085c02b15d5978af082fc9d153ca644625",
+  "min_audited": 30,
+  "audited_accepts": 30,
+  "deployment": {
+    "image_digest": "python@sha256:191083cdf6c7bda8c76158983163ead5d5cf7b77cf3033e805bb0f5296f51b4b",
+    "source_sha": "50ca6462176c68fd49c7af740f69e3354f89d9eb",
+    "meta_sha": "9d80ccd12e47129a3dbb0a0345c59a24f9fd5a21",
+    "model_id": "qwen2.5-coder-7b-instruct",
+    "scaffold": "single-shot-json",
+    "prompt_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "decoding": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "seed": 20261127
+    },
+    "attempt_budget": 8,
+    "seed": 20261127
+  },
+  "certified_pass_band": {
+    "pass_rate": 0.42
+  },
+  "drift_triggers": {
+    "pass_rate_jump": 0.15
+  },
+  "stamp_sha256": "14d4999c52be78bef71414fe534d51712893b0355738f63a5c8b363300db7f2e"
+}

@@ -1,0 +1,2372 @@
+{
+  "metric": "FAR given Tier-1 pass",
+  "N": [
+    1,
+    4,
+    8,
+    16,
+    32
+  ],
+  "analysis": {
+    "packs": {
+      "authlib-jwt-dupkey-canonicalization": {
+        "deepseek/deepseek-v4.1-flash-1017": {
+          "samples": 32,
+          "untested": 13,
+          "t1_holds": 17,
+          "t1_violated": 2
+        },
+        "tencent/hy4-flash": {
+          "samples": 32,
+          "untested": 26,
+          "t1_holds": 4,
+          "t1_violated": 2
+        },
+        "z-ai/glm-5.3-flash": {
+          "samples": 32,
+          "untested": 8,
+          "t1_holds": 19,
+          "t1_violated": 5
+        }
+      },
+      "fastmcp-canonical-authz-alias": {
+        "deepseek/deepseek-v4.1-flash-1017": {
+          "samples": 32,
+          "untested": 7,
+          "t1_holds": 25,
+          "t1_violated": 0
+        },
+        "tencent/hy4-flash": {
+          "samples": 32,
+          "untested": 9,
+          "t1_holds": 23,
+          "t1_violated": 0
+        },
+        "z-ai/glm-5.3-flash": {
+          "samples": 32,
+          "untested": 14,
+          "t1_holds": 18,
+          "t1_violated": 0
+        }
+      }
+    },
+    "N": {
+      "1": {
+        "cells": {
+          "t1p_t2p": 3,
+          "t1p_t2m": 1,
+          "no_t1_pass": 0,
+          "untested": 2
+        },
+        "t1_pass": 4,
+        "far_given_t1_pass": 0.25,
+        "per_pack": {
+          "authlib-jwt-dupkey-canonicalization": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": null,
+              "t1": null,
+              "t2": null,
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": null,
+              "t1": null,
+              "t2": null,
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            }
+          },
+          "fastmcp-canonical-authz-alias": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            }
+          }
+        }
+      },
+      "4": {
+        "cells": {
+          "t1p_t2p": 3,
+          "t1p_t2m": 3,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 6,
+        "far_given_t1_pass": 0.5,
+        "per_pack": {
+          "authlib-jwt-dupkey-canonicalization": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 1,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "tencent/hy4-flash": {
+              "selected": 2,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            }
+          },
+          "fastmcp-canonical-authz-alias": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            }
+          }
+        }
+      },
+      "8": {
+        "cells": {
+          "t1p_t2p": 3,
+          "t1p_t2m": 3,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 6,
+        "far_given_t1_pass": 0.5,
+        "per_pack": {
+          "authlib-jwt-dupkey-canonicalization": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 1,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "tencent/hy4-flash": {
+              "selected": 2,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            }
+          },
+          "fastmcp-canonical-authz-alias": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            }
+          }
+        }
+      },
+      "16": {
+        "cells": {
+          "t1p_t2p": 3,
+          "t1p_t2m": 3,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 6,
+        "far_given_t1_pass": 0.5,
+        "per_pack": {
+          "authlib-jwt-dupkey-canonicalization": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 1,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "tencent/hy4-flash": {
+              "selected": 2,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            }
+          },
+          "fastmcp-canonical-authz-alias": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            }
+          }
+        }
+      },
+      "32": {
+        "cells": {
+          "t1p_t2p": 3,
+          "t1p_t2m": 3,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 6,
+        "far_given_t1_pass": 0.5,
+        "per_pack": {
+          "authlib-jwt-dupkey-canonicalization": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 1,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "tencent/hy4-flash": {
+              "selected": 2,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            }
+          },
+          "fastmcp-canonical-authz-alias": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            }
+          }
+        }
+      }
+    }
+  },
+  "per_pack": {
+    "authlib-jwt-dupkey-canonicalization": {
+      "1": {
+        "cells": {
+          "t1p_t2p": 0,
+          "t1p_t2m": 1,
+          "no_t1_pass": 0,
+          "untested": 2
+        },
+        "t1_pass": 1,
+        "far_given_t1_pass": 1.0,
+        "per_pack": {
+          "authlib-jwt-dupkey-canonicalization": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": null,
+              "t1": null,
+              "t2": null,
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": null,
+              "t1": null,
+              "t2": null,
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            }
+          }
+        }
+      },
+      "4": {
+        "cells": {
+          "t1p_t2p": 0,
+          "t1p_t2m": 3,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 3,
+        "far_given_t1_pass": 1.0,
+        "per_pack": {
+          "authlib-jwt-dupkey-canonicalization": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 1,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "tencent/hy4-flash": {
+              "selected": 2,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            }
+          }
+        }
+      },
+      "8": {
+        "cells": {
+          "t1p_t2p": 0,
+          "t1p_t2m": 3,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 3,
+        "far_given_t1_pass": 1.0,
+        "per_pack": {
+          "authlib-jwt-dupkey-canonicalization": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 1,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "tencent/hy4-flash": {
+              "selected": 2,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            }
+          }
+        }
+      },
+      "16": {
+        "cells": {
+          "t1p_t2p": 0,
+          "t1p_t2m": 3,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 3,
+        "far_given_t1_pass": 1.0,
+        "per_pack": {
+          "authlib-jwt-dupkey-canonicalization": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 1,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "tencent/hy4-flash": {
+              "selected": 2,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            }
+          }
+        }
+      },
+      "32": {
+        "cells": {
+          "t1p_t2p": 0,
+          "t1p_t2m": 3,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 3,
+        "far_given_t1_pass": 1.0,
+        "per_pack": {
+          "authlib-jwt-dupkey-canonicalization": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 1,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "tencent/hy4-flash": {
+              "selected": 2,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "VIOLATED",
+              "refuted_by": "pack/variants/aud-polyglot/run.sh"
+            }
+          }
+        }
+      }
+    },
+    "fastmcp-canonical-authz-alias": {
+      "1": {
+        "cells": {
+          "t1p_t2p": 3,
+          "t1p_t2m": 0,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 3,
+        "far_given_t1_pass": 0.0,
+        "per_pack": {
+          "fastmcp-canonical-authz-alias": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            }
+          }
+        }
+      },
+      "4": {
+        "cells": {
+          "t1p_t2p": 3,
+          "t1p_t2m": 0,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 3,
+        "far_given_t1_pass": 0.0,
+        "per_pack": {
+          "fastmcp-canonical-authz-alias": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            }
+          }
+        }
+      },
+      "8": {
+        "cells": {
+          "t1p_t2p": 3,
+          "t1p_t2m": 0,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 3,
+        "far_given_t1_pass": 0.0,
+        "per_pack": {
+          "fastmcp-canonical-authz-alias": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            }
+          }
+        }
+      },
+      "16": {
+        "cells": {
+          "t1p_t2p": 3,
+          "t1p_t2m": 0,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 3,
+        "far_given_t1_pass": 0.0,
+        "per_pack": {
+          "fastmcp-canonical-authz-alias": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            }
+          }
+        }
+      },
+      "32": {
+        "cells": {
+          "t1p_t2p": 3,
+          "t1p_t2m": 0,
+          "no_t1_pass": 0,
+          "untested": 0
+        },
+        "t1_pass": 3,
+        "far_given_t1_pass": 0.0,
+        "per_pack": {
+          "fastmcp-canonical-authz-alias": {
+            "deepseek/deepseek-v4.1-flash-1017": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "tencent/hy4-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            },
+            "z-ai/glm-5.3-flash": {
+              "selected": 0,
+              "t1": "HOLDS",
+              "t2": "HOLDS",
+              "refuted_by": null
+            }
+          }
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 13,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 10,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 9,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 27,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 12,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 16,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 6,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 5,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 14,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'authlib/oauth2/rfc7523/jwt_bearer.py'\npatch: **** malformed patch at line 23: @@ -164,7 +167,7 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 18,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 15,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 17,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 19,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 24,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 0,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 8,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'authlib/oauth2/rfc7523/jwt_bearer.py'\npatch: **** malformed patch at line 11:"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 22,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'authlib/oauth2/rfc7523/jwt_bearer.py'\npatch: **** malformed patch at line 21: @@ -166,7 +169,7 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 11,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 3,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 25,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 23,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 2,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 20,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 4,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 28,
+      "t1": "VIOLATED",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 26,
+      "t1": "VIOLATED",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 22,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 2,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 21,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 29,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 7,
+      "t1": "VIOLATED",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 1,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 7,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 28,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 0,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 31,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'authlib/oauth2/rfc7523/jwt_bearer.py'\n2 out of 3 hunks failed--saving rejects to 'authlib/oauth2/rfc7523/jwt_bearer.py.rej'"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 1,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 2,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 4,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 23,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 14,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 18,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 7,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 6,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 9,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'authlib/oauth2/rfc7523/jwt_bearer.py'\npatch: **** malformed patch at line 13:"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 24,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 8,
+      "t1": "VIOLATED",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 15,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 0,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 13,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 12,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 10,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'authlib/oauth2/rfc7523/jwt_bearer.py'\npatch: **** malformed patch at line 12:              self.requested_scope = claims.get(\"scope\")"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 13,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'authlib/oauth2/rfc7523/jwt_bearer.py'\npatch: **** malformed patch at line 14:"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 12,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'authlib/oauth2/rfc7523/jwt_bearer.py'\n1 out of 1 hunks failed--saving rejects to 'authlib/oauth2/rfc7523/jwt_bearer.py.rej'"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 14,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 15,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'authlib/oauth2/rfc7523/jwt_bearer.py'\npatch: **** malformed patch at line 13:"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 19,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 11,
+      "t1": "VIOLATED",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 18,
+      "t1": "VIOLATED",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 17,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 8,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 22,
+      "t1": "VIOLATED",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 24,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 1,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 25,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 21,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 3,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 9,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 26,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: I can't seem to find a patch in there anywhere."
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 16,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'authlib/oauth2/rfc7523/jwt_bearer.py'\npatch: **** malformed patch at line 15:"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 23,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: I can't seem to find a patch in there anywhere."
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 17,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 25,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 5,
+      "t1": "VIOLATED",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 28,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 6,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 21,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 29,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 31,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 4,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 30,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 11,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 20,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 5,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 19,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 3,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 30,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 27,
+      "t1": "HOLDS",
+      "t2": "VIOLATED",
+      "refuted_by": "pack/variants/aud-polyglot/run.sh",
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 26,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 27,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 29,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 31,
+      "t1": "VIOLATED",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 10,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 20,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "tencent/hy4-flash",
+      "sample": 16,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 30,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 0,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 13,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 19,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 28,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 15,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 22,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 4,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 21,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 6,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 5,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 24,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 11,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 1,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 12,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 23,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 30,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 0,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 2,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 5,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 29,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 7,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 7,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 10,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 17,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 18,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 3,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 15,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 13,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 27,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 9,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 20,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 10,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 26,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 2,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 26,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 19,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 25,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 24,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 25,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 1,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: I can't seem to find a patch in there anywhere."
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 28,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 4,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 22,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 4,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 31,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 2,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 11,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 0,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 20,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 5,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'fastmcp_slim/fastmcp/server/middleware/authorization.py'\npatch: **** unexpected end of file in patch"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 17,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 7,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'fastmcp_slim/fastmcp/server/middleware/authorization.py'\npatch: **** malformed patch at line 3: @@ -import logging"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 1,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 8,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 6,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 13,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 31,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 16,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'fastmcp_slim/fastmcp/server/middleware/authorization.py'\npatch: **** unexpected end of file in patch"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 14,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 10,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: I can't seem to find a patch in there anywhere."
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 9,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 15,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 12,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 19,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 20,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: I can't seem to find a patch in there anywhere."
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 16,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: I can't seem to find a patch in there anywhere."
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 17,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: I can't seem to find a patch in there anywhere."
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 14,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 22,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 8,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "sample": 9,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 30,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'fastmcp_slim/fastmcp/server/middleware/authorization.py'\npatch: **** unexpected end of file in patch"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 18,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 31,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: I can't seem to find a patch in there anywhere."
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 26,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 27,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 29,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'fastmcp_slim/fastmcp/server/middleware/authorization.py'\n1 out of 1 hunks failed--saving rejects to 'fastmcp_slim/fastmcp/server/middleware/authorization.py.rej'"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 3,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'fastmcp_slim/fastmcp/server/middleware/authorization.py'\npatch: **** malformed patch at line 10: @@ -52,17 +42,6 @@ logger = logging.getLogger(__name__)"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 28,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 23,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'fastmcp_slim/fastmcp/server/middleware/authorization.py'\npatch: **** malformed patch at line 9: @@ -48,16 +47,6 @@ from fastmcp.utilities.versions import VersionSpec"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 3,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 25,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: I can't seem to find a patch in there anywhere."
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 6,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'fastmcp_slim/fastmcp/server/middleware/authorization.py'\npatch: **** malformed patch at line 25: -            hashed = parse_hashed_backend_name(tool_name)"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 11,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 23,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 16,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 14,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 8,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 21,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 30,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 27,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 29,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "z-ai/glm-5.3-flash",
+      "sample": 24,
+      "t1": "HOLDS",
+      "t2": "HOLDS",
+      "refuted_by": null,
+      "untested_reason": null
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 18,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "apply_failed: patching file 'fastmcp_slim/fastmcp/server/middleware/authorization.py'\npatch: **** malformed patch at line 26:"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 12,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "model": "tencent/hy4-flash",
+      "sample": 21,
+      "t1": "untested",
+      "t2": null,
+      "refuted_by": null,
+      "untested_reason": "no_parseable_diff"
+    }
+  ]
+}

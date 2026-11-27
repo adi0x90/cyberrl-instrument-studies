@@ -1,0 +1,149 @@
+{
+  "id": "containment_cidr_block_02",
+  "family": "containment",
+  "polarity_sensitive": true,
+  "source": "\"\"\"Egress containment against a classless allowlist.\"\"\"\n\n\ndef parse_ip(dotted):\n    a, b, c, d = (int(part) for part in dotted.split(\".\"))\n    return (a << 24) | (b << 16) | (c << 8) | d\n\n\ndef mask_bits(prefix_len):\n    return (0xFFFFFFFF << (32 - prefix_len)) & 0xFFFFFFFF\n\n\nclass Network:\n    def __init__(self, base, prefix_len):\n        self.base = base\n        self.prefix_len = prefix_len\n\n\nclass Address:\n    def __init__(self, value):\n        self.value = value\n\n\ndef contained(net, addr):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def contained",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "An address is contained in a network only when the prefix length is a valid IPv4 length and the address masked by that prefix equals the masked network base.",
+  "security_cases": [
+    {
+      "id": "s1_outside_prefix",
+      "call": "contained(Network(parse_ip(\"10.0.0.0\"), 8), Address(parse_ip(\"192.168.1.5\")))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_neighbour_prefix",
+      "call": "contained(Network(parse_ip(\"10.0.0.0\"), 8), Address(parse_ip(\"11.0.0.1\")))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_other_private_range",
+      "call": "contained(Network(parse_ip(\"10.0.0.0\"), 8), Address(parse_ip(\"172.16.0.1\")))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_prefix_len_out_of_range_high",
+      "call": "contained(Network(parse_ip(\"10.0.0.0\"), 33), Address(parse_ip(\"10.0.0.1\")))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_sixteen_bit_outside",
+      "call": "contained(Network(parse_ip(\"192.168.0.0\"), 16), Address(parse_ip(\"192.169.0.1\")))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_twelve_bit_outside",
+      "call": "contained(Network(parse_ip(\"172.16.0.0\"), 12), Address(parse_ip(\"172.32.0.1\")))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s7_slash_8_other_network",
+      "call": "contained(Network(parse_ip(\"0.0.0.0\"), 8), Address(parse_ip(\"8.8.8.8\")))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s8_prefix_len_out_of_range_low",
+      "call": "contained(Network(parse_ip(\"10.0.0.0\"), -1), Address(parse_ip(\"10.0.0.1\")))",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_inside_slash_8",
+      "call": "contained(Network(parse_ip(\"10.0.0.0\"), 8), Address(parse_ip(\"10.1.2.3\")))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_slash_8_upper_edge",
+      "call": "contained(Network(parse_ip(\"10.0.0.0\"), 8), Address(parse_ip(\"10.255.255.255\")))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_network_address_itself",
+      "call": "contained(Network(parse_ip(\"10.0.0.0\"), 8), Address(parse_ip(\"10.0.0.0\")))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_inside_slash_16",
+      "call": "contained(Network(parse_ip(\"192.168.0.0\"), 16), Address(parse_ip(\"192.168.13.7\")))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_default_route",
+      "call": "contained(Network(parse_ip(\"0.0.0.0\"), 0), Address(parse_ip(\"203.0.113.9\")))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_slash_12_upper_edge",
+      "call": "contained(Network(parse_ip(\"172.16.0.0\"), 12), Address(parse_ip(\"172.31.255.254\")))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b7_host_route",
+      "call": "contained(Network(parse_ip(\"10.0.0.0\"), 32), Address(parse_ip(\"10.0.0.0\")))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b8_base_host_bits_masked",
+      "call": "contained(Network(parse_ip(\"10.0.5.5\"), 8), Address(parse_ip(\"10.7.7.7\")))",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "0 <= net.prefix_len <= 32 and (addr.value & mask_bits(net.prefix_len)) == (net.base & mask_bits(net.prefix_len))",
+  "alternate_fixes": [
+    "0 <= net.prefix_len < 33 and (net.base & mask_bits(net.prefix_len)) == (addr.value & mask_bits(net.prefix_len))",
+    "net.prefix_len <= 32 and net.prefix_len >= 0 and mask_bits(net.prefix_len) & net.base == mask_bits(net.prefix_len) & addr.value",
+    "0 <= net.prefix_len <= 32 and 0 == ((addr.value ^ net.base) & mask_bits(net.prefix_len))"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "net.prefix_len == 8 and (addr.value & mask_bits(8)) == (net.base & mask_bits(8))",
+      "why": "Pins the /8 from the incident to the exclusion of every other allowlisted prefix length, refusing valid /16 and /12 networks."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "(addr.value & mask_bits(net.prefix_len)) == (net.base & mask_bits(net.prefix_len))",
+      "why": "Omits the prefix-length range check, so an out-of-range prefix such as /33 raises and /-1 masks everything into range."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Denies every address, so no legitimate allowlisted egress can succeed."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and ((addr.value & mask_bits(net.prefix_len)) == (net.base & mask_bits(net.prefix_len)))",
+      "why": "Wraps the range-free masked comparison in 'True and (...)', leaving invalid prefix lengths unguarded."
+    }
+  ],
+  "polarity": {
+    "fact": "An address is contained only when its value masked by the prefix mask is equal to the network base masked by the same mask; inequality means outside.",
+    "correct_marker": [
+      "=="
+    ],
+    "converse_marker": [
+      "!="
+    ]
+  }
+}

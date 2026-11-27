@@ -1,0 +1,14 @@
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -184,8 +184,10 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         # when the assertion carries a "scope" claim, it has been validated
+         # against the client's registered scopes and now defines the scope
+         # policy of this grant
+-        if self.canonical_claims.get("scope") is not None:
+-            self.requested_scope = claims.get("scope")
++        canonical_scope = self.canonical_claims.get("scope")
++        if canonical_scope is not None:
++            self.requested_scope = canonical_scope
++            claims["scope"] = canonical_scope
+ 
+         subject = claims.get("sub")

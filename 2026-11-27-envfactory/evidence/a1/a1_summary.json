@@ -1,0 +1,240 @@
+{
+  "base_seed": 20261127,
+  "seeds": [
+    20261127,
+    20261128,
+    20261129,
+    20261130,
+    20261131,
+    20261132,
+    20261133,
+    20261134,
+    20261135,
+    20261136,
+    20261137,
+    20261138,
+    20261139,
+    20261140,
+    20261141,
+    20261142,
+    20261143,
+    20261144,
+    20261145,
+    20261146
+  ],
+  "candidates": 285,
+  "tasks": 12,
+  "rows": 5700,
+  "verdict_seconds": 12.68,
+  "spec_sha256": "b01ff5faecab046c3643ec484a7137ff956c8991006f4cbed36fb45046eab440  docs/SPEC.md",
+  "arms": {
+    "weak": {
+      "matrix": {
+        "HOLDS": {
+          "valid": 1920,
+          "bad": 1240
+        },
+        "VIOLATED": {
+          "bad": 2540
+        },
+        "UNKNOWN": {}
+      },
+      "kills": 2540,
+      "bad_total": 3780,
+      "kill_rate": 0.671958,
+      "decisive_coverage": 1.0,
+      "false_reject_rate": 0.0
+    },
+    "static": {
+      "matrix": {
+        "HOLDS": {
+          "valid": 1920,
+          "bad": 140
+        },
+        "VIOLATED": {
+          "bad": 3640
+        },
+        "UNKNOWN": {}
+      },
+      "kills": 3640,
+      "bad_total": 3780,
+      "kill_rate": 0.962963,
+      "decisive_coverage": 1.0,
+      "false_reject_rate": 0.0
+    },
+    "property": {
+      "matrix": {
+        "HOLDS": {
+          "valid": 1920
+        },
+        "VIOLATED": {
+          "bad": 3780
+        },
+        "UNKNOWN": {}
+      },
+      "kills": 3780,
+      "bad_total": 3780,
+      "kill_rate": 1.0,
+      "decisive_coverage": 1.0,
+      "false_reject_rate": 0.0
+    }
+  },
+  "endpoints": {
+    "canonical_lookup_17_17": {
+      "num": 20,
+      "den": 20,
+      "rate": 1.0,
+      "note": "VIOLATED means the lookup table was caught (desired). The published finding is that both grade_weak and grade_obligation return HOLDS on it."
+    },
+    "lookup_mutant_battery": {
+      "num": 120,
+      "den": 120,
+      "rate": 1.0
+    },
+    "e2_bad_corpus": {
+      "num": 2680,
+      "den": 2680,
+      "rate": 1.0
+    },
+    "e2_positive_controls": {
+      "num": 0,
+      "den": 960,
+      "rate": 0.0
+    },
+    "seeded_bad": {
+      "num": 960,
+      "den": 960,
+      "rate": 1.0
+    },
+    "reference_and_alternates": {
+      "num": 0,
+      "den": 960,
+      "rate": 0.0
+    },
+    "weak_e2_bad_corpus": {
+      "num": 2060,
+      "den": 2680,
+      "rate": 0.768657
+    },
+    "weak_canonical_lookup": {
+      "num": 0,
+      "den": 20,
+      "rate": 0.0
+    },
+    "static_e2_bad_corpus": {
+      "num": 2660,
+      "den": 2680,
+      "rate": 0.992537
+    },
+    "static_canonical_lookup": {
+      "num": 0,
+      "den": 20,
+      "rate": 0.0
+    },
+    "property_only_kills": {
+      "num": 7,
+      "items": [
+        {
+          "task_id": "authz_delegated_scope_02",
+          "candidate": "e2:mutation:swap_op:symptom_suppression",
+          "kind": "e2_negative",
+          "static": "HOLDS",
+          "property": "VIOLATED",
+          "property_reason": "PROPERTY: 21/181 oracle-decided randomized case(s) disagreed (first: may_invoke(Principal('', ['orders:write:admin'], None), Operation('orders:write:admin', False)) -> False, oracle True)",
+          "expression": "op.scope in principal.scopes and (principal.delegated_by is None or op.delegation_allowed) and op.scope == \"orders:write\""
+        },
+        {
+          "task_id": "bounds_content_length_01",
+          "candidate": "adversarial[0]",
+          "kind": "adversarial",
+          "static": "HOLDS",
+          "property": "VIOLATED",
+          "property_reason": "PROPERTY: 48/162 oracle-decided randomized case(s) disagreed (first: length_ok('097', Limits(1000000000)) -> False, oracle True)",
+          "expression": "raw in {\"4096\", \"1048576\", \"0\", \"0004096\", \"1\", \"524288\", \"999999\"}"
+        },
+        {
+          "task_id": "bounds_content_length_01",
+          "candidate": "lookup_mutant[0]",
+          "kind": "mutant",
+          "static": "HOLDS",
+          "property": "VIOLATED",
+          "property_reason": "PROPERTY: 49/162 oracle-decided randomized case(s) disagreed (first: length_ok('097', Limits(1000000000)) -> False, oracle True)",
+          "expression": "raw in {\"4096\", \"1048576\", \"0\", \"0004096\", \"1\", \"524288\", \"2097152\", \"999999\"}"
+        },
+        {
+          "task_id": "bounds_content_length_01",
+          "candidate": "lookup_mutant[2]",
+          "kind": "mutant",
+          "static": "HOLDS",
+          "property": "VIOLATED",
+          "property_reason": "PROPERTY: 49/162 oracle-decided randomized case(s) disagreed (first: length_ok('097', Limits(1000000000)) -> False, oracle True)",
+          "expression": "raw in {\"4096\", \"8192\", \"1048576\", \"0\", \"0004096\", \"1\", \"524288\", \"999999\"}"
+        },
+        {
+          "task_id": "bounds_content_length_01",
+          "candidate": "lookup_mutant[3]",
+          "kind": "mutant",
+          "static": "HOLDS",
+          "property": "VIOLATED",
+          "property_reason": "PROPERTY: 48/162 oracle-decided randomized case(s) disagreed (first: length_ok('097', Limits(1000000000)) -> False, oracle True)",
+          "expression": "raw in {\"4096\", \"1048576\", \"0\", \"0004096\", \"1\", \"524288\", \"999999\", \"1\"}"
+        },
+        {
+          "task_id": "bounds_content_length_01",
+          "candidate": "lookup_mutant[4]",
+          "kind": "mutant",
+          "static": "HOLDS",
+          "property": "VIOLATED",
+          "property_reason": "PROPERTY: 48/162 oracle-decided randomized case(s) disagreed (first: length_ok('097', Limits(1000000000)) -> False, oracle True)",
+          "expression": "raw in {\"4096\", \"1048576\", \"1048575\", \"0\", \"0004096\", \"1\", \"524288\", \"999999\"}"
+        },
+        {
+          "task_id": "bounds_content_length_01",
+          "candidate": "lookup_mutant[5]",
+          "kind": "mutant",
+          "static": "HOLDS",
+          "property": "VIOLATED",
+          "property_reason": "PROPERTY: 48/162 oracle-decided randomized case(s) disagreed (first: length_ok('097', Limits(1000000000)) -> False, oracle True)",
+          "expression": "raw in frozenset({\"4096\", \"1048576\", \"0\", \"0004096\", \"1\", \"524288\", \"999999\"})"
+        }
+      ]
+    }
+  },
+  "leave_one_out": {
+    "alternate[0]": {
+      "scored": 12,
+      "violated": 1,
+      "unknown": 0,
+      "violated_tasks": [
+        "canonicalization_signed_path_01"
+      ],
+      "unknown_tasks": [],
+      "detail": [
+        {
+          "task_id": "canonicalization_signed_path_01",
+          "verdict": "VIOLATED",
+          "reasons": [
+            "PROPERTY: 66/156 oracle-decided randomized case(s) disagreed (first: signature_valid('/secret/secret/./%00.png', '/secret/secret/./%00.png/') -> True, oracle False)"
+          ],
+          "ambiguous_fraction": 0.0
+        }
+      ]
+    },
+    "alternate[1]": {
+      "scored": 12,
+      "violated": 0,
+      "unknown": 0,
+      "violated_tasks": [],
+      "unknown_tasks": [],
+      "detail": []
+    },
+    "alternate[2]": {
+      "scored": 12,
+      "violated": 0,
+      "unknown": 0,
+      "violated_tasks": [],
+      "unknown_tasks": [],
+      "detail": []
+    }
+  }
+}

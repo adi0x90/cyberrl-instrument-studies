@@ -1,0 +1,9 @@
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -152,7 +152,7 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
+         self.verify_claims(canonical)
+         self._verify_asserted_scope(canonical, client)
+         self.canonical_claims = canonical
+-        return token.claims
++        return canonical

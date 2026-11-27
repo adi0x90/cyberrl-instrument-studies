@@ -1,0 +1,137 @@
+{
+  "id": "containment_path_prefix_01",
+  "family": "containment",
+  "polarity_sensitive": true,
+  "source": "\"\"\"Key-prefix containment for a tenant object store.\"\"\"\n\n\nclass Scope:\n    def __init__(self, prefix):\n        self.prefix = prefix\n\n\nclass Target:\n    def __init__(self, key):\n        self.key = key\n\n\ndef contained(scope, target):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def contained",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "A target key is contained in a scope only when the scope prefix is a prefix of the key at a '/' boundary and the key contains no '..' segment.",
+  "security_cases": [
+    {
+      "id": "s1_other_tenant_key",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"tenant-b/secret\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_sibling_prefix_key",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"tenant-ab/secret\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_dotdot_escape",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"tenant-a/../tenant-b/secret\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_nested_dotdot_escape",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"tenant-a/sub/../../tenant-b/secret\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_exact_prefix_root",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"tenant-a\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_absolute_key",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"/tenant-a/secret\"))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s7_case_variant_prefix",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"Tenant-A/secret\"))",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_simple_key",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"tenant-a/report.csv\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_nested_key",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"tenant-a/deep/nested/x\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_second_tenant_key",
+      "call": "contained(Scope(\"tenant-b\"), Target(\"tenant-b/x\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_dotdot_inside_segment",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"tenant-a/x..y\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_multi_segment_prefix",
+      "call": "contained(Scope(\"prod/tenant-a\"), Target(\"prod/tenant-a/x\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_short_prefix",
+      "call": "contained(Scope(\"t-42\"), Target(\"t-42/x/y\"))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b7_hidden_file",
+      "call": "contained(Scope(\"tenant-a\"), Target(\"tenant-a/.hidden\"))",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "target.key.startswith(scope.prefix + \"/\") and \"..\" not in target.key.split(\"/\")",
+  "alternate_fixes": [
+    "target.key.startswith(scope.prefix + \"/\") and target.key.split(\"/\").count(\"..\") == 0",
+    "target.key != scope.prefix and target.key.split(\"/\")[:len(scope.prefix.split(\"/\"))] == scope.prefix.split(\"/\") and \"..\" not in target.key.split(\"/\")",
+    "target.key.startswith(scope.prefix + \"/\") and not any(part == \"..\" for part in target.key.split(\"/\"))"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "target.key.startswith(scope.prefix + \"/\") and \"..\" not in target.key.split(\"/\") and target.key.count(\"/\") == scope.prefix.count(\"/\") + 1",
+      "why": "Restricts containment to a single path level, so every traversal PoC is refused but legitimate nested keys are too."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "target.key.startswith(scope.prefix + \"/\")",
+      "why": "Omits the '..' segment check, so 'tenant-a/../tenant-b/x' is admitted as contained."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Refuses every key, so no legitimate tenant write can succeed."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and (target.key.startswith(scope.prefix + \"/\"))",
+      "why": "Wraps the separator-boundary prefix test in 'True and (...)', which reads as a hardened guard while still admitting traversal keys."
+    }
+  ],
+  "polarity": {
+    "fact": "A key is contained only when the scope prefix is a proper prefix of the key at a separator boundary; containment never follows from the key ending with the prefix.",
+    "correct_marker": [
+      "startswith"
+    ],
+    "converse_marker": [
+      "endswith"
+    ]
+  }
+}

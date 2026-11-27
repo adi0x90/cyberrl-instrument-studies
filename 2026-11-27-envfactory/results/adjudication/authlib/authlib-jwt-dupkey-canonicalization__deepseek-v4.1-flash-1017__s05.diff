@@ -1,0 +1,44 @@
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -123,13 +123,21 @@
+         :return: JWTClaims
+         :raise: InvalidGrantError
+         """
+-        headers, claims = self.extract_assertion(assertion)
++        headers, _ = self.extract_assertion(assertion)
++
++        # Every claim used for security decisions must come from the same
++        # canonical, duplicate-free projection that was validated. Parsing the
++        # assertion with different JSON duplicate-name rules for validation
++        # and authorization can let duplicate members bypass claim checks.
++        canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
++        if not isinstance(canonical, dict):
++            raise InvalidGrantError(description="Invalid JWT payload.")
++
+         # "iss" is read before the signature and the claims are verified, so it
+         # cannot be assumed to be present nor to be a string.
+-        if "iss" not in claims:
++        if "iss" not in canonical:
+             raise InvalidGrantError(description="Missing claim: 'iss'")
+ 
+-        issuer = claims["iss"]
++        issuer = canonical["iss"]
+         if not isinstance(issuer, str):
+             raise InvalidGrantError(description="Invalid claim: 'iss'")
+ 
+@@ -152,15 +160,10 @@
+             log.debug("Assertion Error: %r", e)
+             raise InvalidGrantError("Invalid JWT assertion") from None
+ 
+-        # claims are validated against their canonical, duplicate-free
+-        # projection, so validation sees a deterministic form of the
+-        # assertion regardless of duplicate JSON member names
+-        canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
+         self.verify_claims(canonical)
+         self._verify_asserted_scope(canonical, client)
+         self.canonical_claims = canonical
+-        return token.claims
++        return canonical
+ 
+     def extract_assertion(self, assertion: str):
+         try:

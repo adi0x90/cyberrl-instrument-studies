@@ -1,0 +1,21 @@
+diff --git a/authlib/oauth2/rfc7523/jwt_bearer.py b/authlib/oauth2/rfc7523/jwt_bearer.py
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -164,7 +164,7 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         self.verify_claims(canonical)
+         self._verify_asserted_scope(canonical, client)
+         self.canonical_claims = canonical
+-        return token.claims
++        return canonical
+ 
+     def extract_assertion(self, assertion: str):
+         try:
+@@ -174,7 +174,7 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+             raise InvalidGrantError(description="Invalid JWT assertion.") from e
+ 
+         try:
+-            claims = json_loads(obj.payload)
++            claims = json.loads(obj.payload, object_pairs_hook=self._dedupe_members)
+         except ValueError:
+             raise InvalidGrantError(description="Invalid JWT payload.") from None
+ 

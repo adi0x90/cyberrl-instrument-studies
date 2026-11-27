@@ -1,0 +1,119 @@
+{
+  "clean": [
+    {
+      "pack": "etcd-revocation-skew",
+      "exit": 0,
+      "integrity_pass": true,
+      "failing": [],
+      "checks": {
+        "C1": "PASS",
+        "C2": "PASS",
+        "C3": "PASS",
+        "C4": "PASS",
+        "C5": "PASS",
+        "C6": "not_applicable",
+        "C8": "PASS",
+        "C9": "PASS",
+        "C10": "PASS"
+      }
+    },
+    {
+      "pack": "authlib-jwt-dupkey-canonicalization",
+      "exit": 0,
+      "integrity_pass": true,
+      "failing": [],
+      "checks": {
+        "C1": "PASS",
+        "C2": "PASS",
+        "C3": "PASS",
+        "C4": "PASS",
+        "C5": "PASS",
+        "C6": "not_applicable",
+        "C8": "PASS",
+        "C9": "PASS",
+        "C10": "PASS"
+      }
+    },
+    {
+      "pack": "coremqtt-publish-varint-payloadlen",
+      "exit": 0,
+      "integrity_pass": true,
+      "failing": [],
+      "checks": {
+        "C1": "PASS",
+        "C2": "PASS",
+        "C3": "PASS",
+        "C4": "PASS",
+        "C5": "PASS",
+        "C6": "not_applicable",
+        "C8": "PASS",
+        "C9": "PASS",
+        "C10": "PASS"
+      }
+    },
+    {
+      "pack": "fastmcp-canonical-authz-alias",
+      "exit": 0,
+      "integrity_pass": true,
+      "failing": [],
+      "checks": {
+        "C1": "PASS",
+        "C2": "PASS",
+        "C3": "PASS",
+        "C4": "PASS",
+        "C5": "PASS",
+        "C6": "not_applicable",
+        "C8": "PASS",
+        "C9": "PASS",
+        "C10": "PASS"
+      }
+    },
+    {
+      "pack": "redis-setrange-grow-undercount",
+      "exit": 0,
+      "integrity_pass": true,
+      "failing": [],
+      "checks": {
+        "C1": "PASS",
+        "C2": "PASS",
+        "C3": "PASS",
+        "C4": "PASS",
+        "C5": "PASS",
+        "C6": "not_applicable",
+        "C8": "PASS",
+        "C9": "PASS",
+        "C10": "PASS"
+      }
+    }
+  ],
+  "defects": {
+    "D1": {
+      "exit": 2,
+      "C2_status": "FAIL",
+      "names_exact_file": true,
+      "detail": "metadata file visible to agent: pack/etcd-revocation-skew/manifest.json; metadata path present in untrusted tree: pack/etcd-revocation-skew/manifest.json",
+      "caught": true
+    },
+    "D2": {
+      "exit": 0,
+      "C4_status": "FAIL",
+      "kill_rate": 0.671958,
+      "caught": true,
+      "detail": "kill_rate=0.672 (needs >=0.90), false_rejects=0"
+    },
+    "D3": {
+      "stamp_level": "policy_tested",
+      "verify_exit": 2,
+      "cites_drift_trigger": true,
+      "cites_deployment_drift": true,
+      "missing_deployment_exit": 2,
+      "stderr": [
+        "DRIFT: deployment drifted from certified configuration: scaffold: stamp='single-shot-json' deployment='multi-turn-tool-loop'; attempt_budget: stamp=8 deployment=32",
+        "DRIFT: drift trigger fired: pass_rate_jump=0.480 >= 0.15 (certified 0.42, observed 0.900)"
+      ],
+      "caught": true
+    }
+  },
+  "ok": true,
+  "stamp_fixture_note": "stamp produced from a synthetic observation file; it exists to exercise verify(), not to certify a policy"
+}

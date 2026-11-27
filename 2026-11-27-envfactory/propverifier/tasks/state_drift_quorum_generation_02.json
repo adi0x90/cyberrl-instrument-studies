@@ -1,0 +1,128 @@
+{
+  "id": "state_drift_quorum_generation_02",
+  "family": "state_drift",
+  "polarity_sensitive": false,
+  "source": "\"\"\"Lease quorum check against a membership view.\"\"\"\n\n\nclass Lease:\n    def __init__(self, owner, generation, released):\n        self.owner = owner\n        self.generation = generation\n        self.released = released\n\n\nclass Membership:\n    def __init__(self, node, generation):\n        self.node = node\n        self.generation = generation\n\n\ndef may_commit(lease, membership):\n    return REPLACE_ME\n",
+  "editable": {
+    "path": "def may_commit",
+    "mode": "expression"
+  },
+  "placeholder": "REPLACE_ME",
+  "property": "A coordinator may commit only while the lease holder is the local node, the lease generation matches the membership generation, and the lease is unreleased.",
+  "security_cases": [
+    {
+      "id": "s1_stale_owner",
+      "call": "may_commit(Lease(\"n1\", 4, False), Membership(\"n2\", 4))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s2_membership_advanced",
+      "call": "may_commit(Lease(\"n1\", 4, False), Membership(\"n1\", 5))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s3_membership_lagging",
+      "call": "may_commit(Lease(\"n1\", 5, False), Membership(\"n1\", 4))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s4_released_lease",
+      "call": "may_commit(Lease(\"n1\", 4, True), Membership(\"n1\", 4))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s5_generation_type_confusion",
+      "call": "may_commit(Lease(\"n1\", \"4\", False), Membership(\"n1\", 4))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s6_node_trailing_space",
+      "call": "may_commit(Lease(\"n1 \", 4, False), Membership(\"n1\", 4))",
+      "expect_error": false,
+      "expect": false
+    },
+    {
+      "id": "s7_node_case_variant",
+      "call": "may_commit(Lease(\"N1\", 4, False), Membership(\"n1\", 4))",
+      "expect_error": false,
+      "expect": false
+    }
+  ],
+  "benign_cases": [
+    {
+      "id": "b1_matching_lease",
+      "call": "may_commit(Lease(\"n1\", 4, False), Membership(\"n1\", 4))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b2_other_node",
+      "call": "may_commit(Lease(\"node-7\", 12, False), Membership(\"node-7\", 12))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b3_generation_zero",
+      "call": "may_commit(Lease(\"n1\", 0, False), Membership(\"n1\", 0))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b4_new_generation",
+      "call": "may_commit(Lease(\"c-1\", 9, False), Membership(\"c-1\", 9))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b5_large_generation",
+      "call": "may_commit(Lease(\"n1\", 1000000, False), Membership(\"n1\", 1000000))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b6_underscored_node",
+      "call": "may_commit(Lease(\"node_42\", 3, False), Membership(\"node_42\", 3))",
+      "expect_error": false,
+      "expect": true
+    },
+    {
+      "id": "b7_dashed_node",
+      "call": "may_commit(Lease(\"worker-1\", 2, False), Membership(\"worker-1\", 2))",
+      "expect_error": false,
+      "expect": true
+    }
+  ],
+  "reference_fix": "lease.generation == membership.generation and lease.owner == membership.node and not lease.released",
+  "alternate_fixes": [
+    "not lease.released and lease.owner == membership.node and lease.generation == membership.generation",
+    "(lease.generation == membership.generation) and (membership.node == lease.owner) and lease.released is False",
+    "all([lease.generation == membership.generation, lease.owner == membership.node, lease.released is False])"
+  ],
+  "seeded_bad": [
+    {
+      "family": "symptom_suppression",
+      "expression": "lease.generation == membership.generation and lease.owner == membership.node and not lease.released and lease.generation > 0",
+      "why": "Adds a nonzero-generation precondition, so the stale-lease PoC is refused while legitimate generation-0 bootstrap commits are refused too."
+    },
+    {
+      "family": "guard_too_weak",
+      "expression": "lease.generation == membership.generation and not lease.released",
+      "why": "Never compares the lease owner with the local node, so a stale owner commits after failover."
+    },
+    {
+      "family": "feature_deletion",
+      "expression": "False",
+      "why": "Refuses every commit, so no legitimate coordinator can make progress."
+    },
+    {
+      "family": "ast_wrapper",
+      "expression": "True and (lease.owner == membership.node and not lease.released)",
+      "why": "Wraps the owner check in 'True and (...)', leaving the generation-mismatch drift unguarded."
+    }
+  ]
+}

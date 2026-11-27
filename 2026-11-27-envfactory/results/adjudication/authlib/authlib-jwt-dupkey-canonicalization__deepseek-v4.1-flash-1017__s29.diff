@@ -1,0 +1,35 @@
+--- a/authlib/oauth2/rfc7523/jwt_bearer.py
++++ b/authlib/oauth2/rfc7523/jwt_bearer.py
+@@ -108,16 +108,18 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+         :return: JWTClaims
+         :raise: InvalidGrantError
+         """
+-        headers, claims = self.extract_assertion(assertion)
++        headers, _ = self.extract_assertion(assertion)
++        canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
++
+         # "iss" is read before the signature and the claims are verified, so it
+         # cannot be assumed to be present nor to be a string.
+-        if "iss" not in claims:
++        if "iss" not in canonical:
+             raise InvalidGrantError(description="Missing claim: 'iss'")
+ 
+-        issuer = claims["iss"]
++        issuer = canonical["iss"]
+         if not isinstance(issuer, str):
+             raise InvalidGrantError(description="Invalid claim: 'iss'")
+ 
+@@ -146,12 +148,10 @@ class JWTBearerGrant(BaseGrant, TokenEndpointMixin):
+ 
+         # claims are validated against their canonical, duplicate-free
+         # projection, so validation sees a deterministic form of the
+         # assertion regardless of duplicate JSON member names
+-        canonical = self.canonical_assertion_claims(self.extract_raw_payload(assertion))
+         self.verify_claims(canonical)
+         self._verify_asserted_scope(canonical, client)
+         self.canonical_claims = canonical
+-        return token.claims
++        return canonical
+ 
+     def extract_assertion(self, assertion: str):
+         try:

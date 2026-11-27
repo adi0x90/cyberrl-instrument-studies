@@ -1,0 +1,7 @@
+[VULNERABLE] authlib-jwt-dupkey-canonicalization scenario=aud
+  observed : access token issued for an assertion whose effective audience is "https://attacker.example"; the authorization server only accepted ['https://as.example.com/token', 'https://as.example.com']
+  expected : authorization server must reject this grant or issue
+             only the canonical, validated scope policy
+  trigger  : assertion payload carries a duplicated JSON member;
+             claim validation used the first occurrence, the
+             authorization decision used the last occurrence

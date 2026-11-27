@@ -1,0 +1,7 @@
+{
+  "pack": "authlib-jwt-dupkey-canonicalization",
+  "model": "tencent/hy4-flash",
+  "sample": 22,
+  "refuted_by": "pack/variants/aud-polyglot/run.sh",
+  "t1_detail": "[SAFE]    authlib-jwt-dupkey-canonicalization scenario=main: token scope safely limited to \"openid\"\n"
+}

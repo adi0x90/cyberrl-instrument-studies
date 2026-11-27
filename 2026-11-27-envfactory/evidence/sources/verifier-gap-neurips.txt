@@ -1,0 +1,199 @@
+TITLE: NeurIPS  The Verifier Gap: A Model-Free Audit Predicts Reward Hacking Before Training
+SOURCE-URL: https://neurips.cc/virtual/2026/loc/sydney/169869
+META:
+
+===== BODY =====
+
+NeurIPS The Verifier Gap: A Model-Free Audit Predicts Reward Hacking Before Training 
+
+ NeurIPS 2026 
+
+ Skip to yearly menu bar 
+ Skip to main content 
+
+ Main Navigation
+
+ NeurIPS
+
+ Code of Ethics
+
+ Code of Conduct
+
+ Create Profile
+
+ Journal To Conference Track
+
+ Diversity & Inclusion
+
+ Proceedings
+
+ Future Meetings
+
+ Press
+
+ Exhibitor Information
+
+ Contact NeurIPS
+
+ Help/FAQ
+
+ Privacy Policy
+
+ Downloads
+
+ My Stuff
+
+ Login 
+
+ Sydney
+
+ Atlanta 
+
+ Paris 
+
+ Select Year: (2026)
+
+ 2026
+
+ 2025
+
+ 2024
+
+ 2023
+
+ 2022
+
+ 2021
+
+ 2020
+
+ 2019
+
+ 2018
+
+ 2017
+
+ 2016
+
+ 2015
+
+ 2014
+
+ 2013
+
+ 2012
+
+ 2011
+
+ 2010
+
+ 2009
+
+ 2008
+
+ 2007
+
+ 2006
+
+ Earlier Conferences
+
+ Start Here
+
+ Schedule
+
+ Tutorials
+
+ Main Conference
+
+ Invited Talks
+
+ Orals
+
+ Spotlights
+
+ Papers
+
+ Evaluations & Datasets
+
+ Position Papers
+
+ Journal Track
+
+ Bridging the Future
+
+ Competitions
+
+ Creative AI
+
+ Education Track
+
+ MLRC
+
+ Test of Time
+
+ Town Hall
+
+ Workshops
+
+ Community
+
+ Socials
+
+ Careers
+
+ Affinity Events
+
+ Expo
+
+ Exhibitors
+
+ Help
+
+ Organizers
+
+ Help via Chat
+
+ FAQ
+
+ Poster
+ in 
+Workshop: Managing Agents that Manage Agents: Workshop on Responsible Use of Meta-Agents that Build, Optimize, and Supervise Other Agents 
+
+ The Verifier Gap: A Model-Free Audit Predicts Reward Hacking Before Training
+
+ Arunkumar V
+
+ Project Page
+
+ Abstract
+
+ Reinforcement learning from verifiable rewards is bounded by its verifier. Outside mathematics and code, rewards come from rubrics, learned judges, and hand-built checkers whose distance from the true objective is unknown, so when a policy's reward rises, no one can say how much of that rise is progress and how much is hacking. We construct a setting where the true reward is exactly computable at both the outcome level and the process level: executable authorization policies over an enumerable context space of 124,416 contexts, where an oracle enumerates every minimal sufficient reason behind every decision, which makes the causal fidelity of a model's cited reasons an exact quantity rather than an estimate. We compile policy-as-code into exact process rewards, degrade the verifier along six realistic axes (outcome-only checking, the literature's standard sufficiency proxy, extraction noise, coarsened taxonomies, stale policies, and an LLM judge), and train against each degraded verifier while the exact one scores every rollout. Four failure phenotypes separate cleanly, each with its own behavioral signature: hacked, starved, diluted, and harmless. Among them is the predicted signature of sufficiency rewards teaching padding, where the proxy reports 1.000 while true faithfulness falls from 0.731 to 0.667. The phenotypes reduce to an empirical gap law. The verifier's selection error, measured before training and without any policy model, weighted by the fraction of updates that flow, predicts post-training damage (R2 = 0.99 optimistic, 0.92 pessimistic; n = 9 cells, leave-one-out error 0.031), and verifiers that overestimate quality do 2.4x more damage per unit of error than verifiers that underestimate it (95% bootstrap CI [1.2, 7.2]). A pre-registered replication on an independent implementation reproduces the phenotypes and their ordering but not the constants, and shows why: the verifier's error is a property of the verifier alone, while the damage it causes also depends on how much headroom the policy has left. We release the testbed, 14 real public policies (Cedar, OPA/Gatekeeper) ported to executable oracles, and the training instrumentation.
+
+ Show more 
+
+ Log in and register to view live content
+
+ Successful Page Load
+
+ NeurIPS uses cookies for essential functions only. We do not sell your personal
+ information.
+ Our Privacy Policy » 
+
+ Accept 
+
+ The NeurIPS Logo above may be used on presentations. Right-click and choose
+ download. It is a vector graphic and may be used at any scale.
+
+ Useful links
+
+ Press 
+
+ Proceedings 
+
+ Contact
+
+ 1269 Law St, San Diego CA 92109
+
+ Email 
+
+ NeurIPS Proceedings
