@@ -5,7 +5,7 @@ This directory is the executable companion to Part 3 of the *Cyber-RL Measuremen
 It is published so that every number in the essay can be recomputed offline:
 
 ```bash
-python3 verify.py     # 49/49 claims, stdlib only, no network
+python3 verify.py     # 60/60 claims, stdlib only, no network
 ```
 
 ## What is withheld, and why
@@ -24,7 +24,7 @@ check). Publishing them here would destroy the property the packs exist to provi
 
 The consequences for replication are bounded and stated plainly:
 
-- `verify.py` recomputes **49/49** claims without `evidence/packs/`. The Track A1 native-pack
+- `verify.py` recomputes **60/60** claims without `evidence/packs/`. The Track A1 native-pack
   verdicts and all Track B selection cells are stored in `evidence/a1/a1_native.json`,
   `evidence/bon/graded_*.jsonl`, and `results/B1_native.json`, which are published.
 - `evidence/evidence.b2sum` is the manifest computed at run time over the full local tree

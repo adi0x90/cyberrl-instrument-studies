@@ -12,7 +12,7 @@ These are not capability benchmarks. Every study tests whether an evaluation or 
 
 ```bash
 python3 verify.py                                      # Parts 1-2: E1/E2/E3 + GRPO arms
-(cd 2026-11-27-envfactory && python3 verify.py)        # Part 3: 49/49 claims
+(cd 2026-11-27-envfactory && python3 verify.py)        # Part 3: 60/60 claims
 ```
 
 Each script reads the archived JSONL and JSON files directly and asserts every count, confidence interval, exact McNemar $p$-value, and false-accept rate cited in the corresponding essay. Neither needs a network connection or a third-party package.
@@ -61,7 +61,7 @@ Held-out repair ended in **no measurable difference** under the pre-committed $\
 
 ### 3. Environment factory: verification, certification, and selection drift (`2026-11-27-envfactory/`)
 
-Four tracks over a frozen spec (`docs/SPEC.md`, sha256 `b01ff5fa…eab440`), recomputed by `verify.py` — **49/49 claims**.
+Four tracks over a frozen spec (`docs/SPEC.md`, sha256 `b01ff5fa…eab440`), recomputed by `verify.py` — **60/60 claims**.
 
 | Track | Question | Measured result |
 |---|---|---|
@@ -69,7 +69,7 @@ Four tracks over a frozen spec (`docs/SPEC.md`, sha256 `b01ff5fa…eab440`), rec
 | **A2** | Can two-level certification catch injected environment defects? | **5/5** clean packs reach `pack_integrity`; D1 (leaked metadata) → C2 FAIL, D2 (weak-verifier swap) → C4 FAIL, D3 (drifted deployment) → `verify` exit 2. **3/3 caught, 0 false FAILs** |
 | **A3** | What does a state-equivalent reset cost, and is snapshot restore viable? | `redis` p50 **0.22–0.35 s**, `etcd` p50 **0.68–0.95 s**, 16-worker throughput 20.5k / 16.8k episodes per hour; dual-marker state-equivalence gate PASS on both; **CRIU restore verified on Redis** (`PONG`); KVM unavailable on the host; library targets (`authlib`, `coreMQTT`) `not_run` — no mutable service state |
 | **B1** | Does Best-of-$N$ selection drift toward patches an independent Tier-2 refutes? | **12-task expression control:** 1 refutation / 112 Tier-1 accepts (0.9%); raw-trace adjudication of all 10 population refutations found **1 genuine bug (Qwen-7B dropped a delegated-scope check) vs 9 differential-oracle artifacts** (unconstrained generators penalising stricter or RFC-compliant patches) |
-| **B1 native** | Same question on real repositories (Part 3's headline) | **`authlib-jwt-dupkey-canonicalization`: 36/40 Tier-1-accepted patches refuted (90.0%)**, 3/3 models refuted at $N \in \{4,8,16,32\}$ — 24 `scope`-only local fixes and 12 first-wins canonicalisations left duplicate-key confusion open on `aud` and `exp`; only 4/40 rejected duplicate JSON members. **`fastmcp-canonical-authz-alias`: 0/66 refuted (0.0%)**, 3/3 models clean at every $N$. Drift tracks *mechanism coverage* of the shipped PoC, not task difficulty. Cost: **$0.98** of API spend |
+| **B1 native** | Same question on real repositories (Part 3's headline) | **`authlib-jwt-dupkey-canonicalization`: 36/40 Tier-1-accepted patches refuted (90.0%)**, 3/3 models refuted at $N \in \{4,8,16,32\}$; all 36 failed both held-out variants, 26 of them still returned the raw last-wins `claims` object and the other 10 moved downstream reads onto a first-wins canonical projection without rejecting duplicate keys; only 4/40 rejected duplicate JSON members, and only those 4 were clean. **`fastmcp-canonical-authz-alias`: 0/66 refuted (0.0%)**, 3/3 models clean at every $N$. Drift tracks *mechanism coverage* of the shipped PoC, not task difficulty. Cost: **$0.98** of API spend |
 | **B2** | Does async Tier-2 latency matter more than sampling rate? | Under a 30 s step clock, the single refuted accept left **0 / 2 / 10** optimizer steps committed before ack at 0 / 60 / 300 s audit delay; the anomaly trigger fired **0** times and would have missed it; stale `policy_rev=1` acks were **ignored as stale in 3/3** arms |
 
 All 192 native-pack completions with their graded verdicts, the 36 adjudication records (verbatim diff plus both failing variant outputs), and 28 fetched primary sources (58 files, raw HTML and text) are archived under `2026-11-27-envfactory/evidence/` and `2026-11-27-envfactory/results/`.
@@ -83,7 +83,7 @@ All 192 native-pack completions with their graded verdicts, the 36 adjudication 
 ├── 2026-11-20-frontier-reexperiment/   # E1, E2, E3 harness, 12 tasks, specs, 318 tests, evidence/
 ├── 2026-11-20-masking-grpo/            # 3-arm GRPO harness, specs, 86 tests, evidence-1.5b/, evidence-7b/
 └── 2026-11-27-envfactory/              # Tier-1 property verifier, envcert CLI, reset microbench,
-                                        # Best-of-N drift + quarantine simulation, 49/49 verify.py
+                                        # Best-of-N drift + quarantine simulation, 60/60 verify.py
 ```
 
 Keep the experiment directories as siblings: `2026-11-20-masking-grpo/rollout.py` imports `harness.*` and `tasks/` from `../2026-11-20-frontier-reexperiment/`.
@@ -94,5 +94,5 @@ Within `2026-11-27-envfactory/`, `verify.py` recomputes Track A and Track B endp
 
 - **LoRA adapter checkpoints** (~360 MB across 1.5B and 7B runs) are omitted so the archive stays small. Every rollout JSONL, metrics manifest, held-out eval JSON, and recomputed `REPORT.md` is included.
 - **Scratch dry-run and smoke logs** are excluded so nothing non-evidential sits next to measured JSONL.
-- **Native pack snapshots** (`2026-11-27-envfactory/evidence/packs/`) are withheld: the forward-injected pack estate is a contamination-controlled asset, and its injection specs, manifests, and held-out variants are the answer key for those tasks. `verify.py` recomputes **49/49** claims without them. See `2026-11-27-envfactory/PUBLICATION-NOTES.md`.
+- **Native pack snapshots** (`2026-11-27-envfactory/evidence/packs/`) are withheld: the forward-injected pack estate is a contamination-controlled asset, and its injection specs, manifests, and held-out variants are the answer key for those tasks. `verify.py` recomputes **60/60** claims without them. See `2026-11-27-envfactory/PUBLICATION-NOTES.md`.
 - **No API keys or host credentials** appear anywhere in the repo or git history; runners read `OPENROUTER_API_KEY` from the environment only.

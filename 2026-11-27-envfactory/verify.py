@@ -183,6 +183,59 @@ def main() -> int:
             f"native.N{n}.far": native_doc["analysis"]["N"][str(n)]["far_given_t1_pass"] for n in (1, 4, 8, 16, 32)
         })
 
+        # Population-level native claims (Part 3 headline), recomputed from the graded rows
+        # and checked against the values the essay states.
+        pop = {}
+        for pack_key in ("authlib", "fastmcp"):
+            rows_ = [row for row in graded if pack_key in row["pack"]]
+            accepts = [row for row in rows_ if row["t1"] == "HOLDS"]
+            refuted = [row for row in accepts if row.get("t2") == "VIOLATED"]
+            clean = [row for row in accepts if row.get("t2") == "HOLDS"]
+            pop[f"native.{pack_key}.t1_accepts"] = len(accepts)
+            pop[f"native.{pack_key}.refuted"] = len(refuted)
+            pop[f"native.{pack_key}.clean"] = len(clean)
+            pop[f"native.{pack_key}.far"] = (
+                round(len(refuted) / len(accepts), 6) if accepts else None
+            )
+        authlib_refuted = [
+            row for row in graded
+            if "authlib" in row["pack"] and row["t1"] == "HOLDS" and row.get("t2") == "VIOLATED"
+        ]
+        authlib_clean = [
+            row for row in graded
+            if "authlib" in row["pack"] and row["t1"] == "HOLDS" and row.get("t2") == "HOLDS"
+        ]
+        pop["native.authlib.refuted_failing_every_variant"] = sum(
+            1 for row in authlib_refuted
+            if row.get("variants") and all(v.get("exit", 0) != 0 for v in row["variants"].values())
+        )
+        pop["native.authlib.refuted_returning_canonical"] = sum(
+            1 for row in authlib_refuted if "return canonical" in row["diff"]
+        )
+        pop["native.authlib.clean_rejecting_duplicate_members"] = sum(
+            1 for row in authlib_clean if "duplicate" in row["diff"].lower()
+        )
+        EXPECTED_POPULATION = {
+            "native.authlib.t1_accepts": 40,
+            "native.authlib.refuted": 36,
+            "native.authlib.clean": 4,
+            "native.authlib.far": 0.9,
+            "native.authlib.refuted_failing_every_variant": 36,
+            "native.authlib.refuted_returning_canonical": 10,
+            "native.authlib.clean_rejecting_duplicate_members": 4,
+            "native.fastmcp.t1_accepts": 66,
+            "native.fastmcp.refuted": 0,
+            "native.fastmcp.clean": 66,
+            "native.fastmcp.far": 0.0,
+        }
+        for claim_id, expected in EXPECTED_POPULATION.items():
+            claims.append({
+                "id": claim_id,
+                "value": expected,
+                "reported_from": "stated in the Part 3 essay and README; recomputed from evidence/bon/graded_*.jsonl",
+            })
+        native_values.update(pop)
+
     print(f"{'claim':50s} {'reported':>14s} {'recomputed':>14s}  status")
     print("-" * 94)
     for claim in claims:
